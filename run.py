@@ -11,7 +11,13 @@ SCOPE = [
 CREDS = Credentials.from_service_account_file("creds.json")
 
 # Authorize the credentials with the required scopes
-SCOPED_CREDS = CREDS.with_scopes(["https://www.googleapis.com/auth/spreadsheets"])
+SCOPED_CREDS = CREDS.with_scopes(
+    [
+        "https://www.googleapis.com/auth/spreadsheets",
+        "https://www.googleapis.com/auth/drive.file",
+        "https://www.googleapis.com/auth/drive",
+    ]
+)
 
 # Authorize the gspread client with the scoped credentials
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
