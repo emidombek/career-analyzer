@@ -1,5 +1,6 @@
 import gspread
 from google.oauth2.service_account import Credentials
+import datetime  # Import the datetime module
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -53,6 +54,21 @@ class Survey:
             "Other",
         ]
         self.answers = []
+
+    def add_timestamp(self):
+        try:
+            # Get the current timestamp
+            timestamp = datetime.datetime.now()
+
+            # Convert the timestamp to a string
+            timestamp_str = timestamp.strftime("%Y-%m-%d %H:%M:%S")
+
+            # Add the timestamp to the answers list
+            self.answers.insert(0, timestamp_str)
+
+            print("Timestamp added to the survey answers.")
+        except Exception as e:
+            print("Error adding timestamp:", str(e))
 
     def conduct_survey(self):
         print("Welcome to the survey!")
@@ -112,8 +128,12 @@ class Survey:
 # Create a survey instance
 survey = Survey()
 
+# Add the timestamp before conducting the survey
+survey.add_timestamp()
+
 # Conduct the survey
 survey.conduct_survey()
+
 # Store survey results in Google Sheet
 survey.store_results_in_google_sheet()
 
