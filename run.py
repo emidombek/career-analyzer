@@ -1,5 +1,6 @@
 import gspread
 from google.oauth2.service_account import Credentials
+import asciichartpy
 import datetime  # Import the datetime module
 
 SCOPE = [
@@ -201,18 +202,60 @@ class Survey:
         for question, answer in zip(self.questions, self.answers):
             print(f"{question}\n- Answer: {answer}\n")
 
+    def display_statistics_as_bars(statistics):
+        for question, data in statistics.items():
+            print(f"Question: {question}")
+            for answer, percentage in data.items():
+                bar = "#" * int(percentage)
+                print(f"{answer}: {bar} {percentage:.2f}%")
+            print()
 
-# Create a survey instance
-survey = Survey()
+    def view_survey_statistics(self):
+        # Count the occurrences of each answer
+        answer_counts = {}
+        total_responses = len(self.answers)
 
-# Add the timestamp before conducting the survey
-survey.add_timestamp()
+        for answer in self.answers:
+            if answer in answer_counts:
+                answer_counts[answer] += 1
+            else:
+                answer_counts[answer] = 1
 
-# Conduct the survey
-survey.conduct_survey()
+        # Calculate percentages
+        percentages = {
+            answer: count / total_responses * 100
+            for answer, count in answer_counts.items()
+        }
 
-# Store survey results in Google Sheet
-survey.store_results_in_google_sheet()
+        # Display the statistics using ASCII bars
+        print("\nSurvey Result Statistics:")
+        for answer, percentage in percentages.items():
+            print(f"{answer}: {'#' * int(percentage)} ({percentage:.2f}%)")
 
-# Display survey results
-survey.display_results()
+    def main():
+        display_welcome()
+
+        # Create a survey instance
+        survey = Survey()
+
+        while True:
+            display_main_menu()
+            choice = input("Enter your choice: ")
+
+            if choice == "1":
+                survey.add_timestamp()
+                survey.conduct_survey()
+                survey.store_results_in_google_sheet()
+                survey.display_results()
+            elif choice == "2":
+                # View survey result statistics
+                survey.view_survey_statistics()
+            elif choice == "3":
+                print("Goodbye!")
+                break
+            else:
+                print("Invalid choice. Please select a valid option.")
+
+
+if __name__ == "__main__":
+    Survey.main()
