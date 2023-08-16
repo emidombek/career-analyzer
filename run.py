@@ -57,9 +57,9 @@ class Survey:
             "How old are you?",
             "Please select your career area:",
             "On a scale of 1 to 5, how satisfied are you with your career?",
-            "Are you considering a career change?",
-            "If yes, what factors are influencing your decision?",
-            "Do you prefer remote work?",
+            "Are you considering a career change? (yes/no)",
+            "If yes, what factors are influencing your decision? (comma-separated)",
+            "Do you prefer remote work? (yes/no)",
         ]
         self.career_areas = [
             "Technology",
@@ -96,91 +96,36 @@ class Survey:
     def conduct_survey(self):
         print("Welcome to the survey!")
         for i, question in enumerate(self.questions):
-            if i == 0:  # What is your name?
-                while True:
-                    answer = input(f"{question} ")
-                    if answer.isalpha():
-                        self.answers.append(answer)
-                        break
-                    else:
-                        print("Invalid input. Please enter letters only.")
-
-            elif i == 1:  # How old are you?
-                while True:
-                    answer = input(f"{question} ")
-                    if answer.isdigit() and 10 <= int(answer) <= 99:
-                        self.answers.append(answer)
-                        break
-                    else:
-                        print("Invalid input. Please enter a 2-digit number.")
-
-            elif i == 2:  # Career areas
+            if i == 2:
                 print(f"{question} (Select a number)")
                 for idx, area in enumerate(self.career_areas, start=1):
                     print(f"{idx}. {area}")
-
-                while True:
-                    choice = input("Your choice: ")
-                    try:
-                        choice_idx = int(choice) - 1
-                        if 0 <= choice_idx < len(self.career_areas):
-                            answer = self.career_areas[choice_idx]
-                            break
-                        else:
-                            print("Invalid choice. Please enter a valid number.")
-                    except ValueError:
-                        print("Invalid input. Please enter a valid number.")
-
-            elif (
-                i == 3
-            ):  # On a scale of 1 to 5, how satisfied are you with your career?
-                while True:
-                    answer = input(f"{question} ")
-                    if answer.isdigit() and 1 <= int(answer) <= 5:
-                        self.answers.append(answer)
-                        break
-                    else:
-                        print("Invalid input. Please enter a number between 1 and 5.")
-
-            elif i == 4:  # Are you considering a career change? (yes/no)
-                while True:
-                    answer = input(f"{question} (yes/no): ").lower()
-                    if answer == "yes" or answer == "no":
-                        self.answers.append(answer)
-                        break
-                    else:
-                        print("Invalid input. Please enter 'yes' or 'no'.")
-
+                choice = input("Your choice: ")
+                try:
+                    choice_idx = int(choice) - 1
+                    answer = self.career_areas[choice_idx]
+                except (ValueError, IndexError):
+                    answer = "Invalid choice"
             elif i == 5:  # Career change factors question
                 print(
                     "Select career change factors (Enter the number(s) separated by spaces):"
                 )
                 for idx, factor in enumerate(self.career_change_factors, start=1):
                     print(f"{idx}. {factor}")
-                while True:
-                    choices = input("Your choice(s): ").split()
-                    try:
-                        selected_factors = [
-                            self.career_change_factors[int(choice) - 1]
-                            for choice in choices
-                        ]
-                        answer = ", ".join(selected_factors)
-                        break
-                    except (ValueError, IndexError):
-                        print(
-                            "Invalid choice. Please enter valid numbers from the list."
-                        )
+                choices = input("Your choice(s): ").split()
+                selected_factors = []
+                try:
+                    for choice in choices:
+                        choice_idx = int(choice) - 1
+                        selected_factors.append(self.career_change_factors[choice_idx])
+                    answer = ", ".join(selected_factors)
+                except (ValueError, IndexError):
+                    answer = "Invalid choice"
+            else:
+                answer = input(f"{question} ")
+            self.answers.append(answer)
 
-            elif i == 6:  # Do you prefer remote work? (yes/no)
-                while True:
-                    answer = input(f"{question} (yes/no): ").lower()
-                    if answer == "yes" or answer == "no":
-                        self.answers.append(answer)
-                        break
-                    else:
-                        print("Invalid input. Please enter 'yes' or 'no'.")
-
-    print("Thank you for completing the survey!")
+        print("Thank you for completing the survey!")
 
     def store_results_in_google_sheet(self):
         try:
