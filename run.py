@@ -115,7 +115,7 @@ class Survey:
                     for choice in choices:
                         choice_idx = int(choice) - 1
                         selected_factors.append(
-                            self.self.career_satisfaction_ratings[choice_idx]
+                            self.career_satisfaction_ratings[choice_idx]
                         )
                     answer = ", ".join(selected_factors)
                 except (ValueError, IndexError):
