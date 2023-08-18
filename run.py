@@ -112,7 +112,7 @@ class Survey:
         try:
             timestamp = datetime.datetime.now()
             timestamp_str = timestamp.strftime("%Y-%m-%d %H:%M:%S")
-            self.answers.insert(0, timestamp_str)
+            self.answers.append(timestamp_str)  # Append the timestamp to the list
             print("Timestamp added to the survey answers.")
         except Exception as e:
             print("Error adding timestamp:", str(e))
@@ -122,47 +122,145 @@ class Survey:
         print(Colors.OKBLUE + "Welcome to the survey!" + Colors.ENDC)
         self.add_timestamp()
         for i, question in enumerate(self.questions):
-            if i == 2:
-                print(Colors.OKGREEN + f"{question} (Select a number)" + Colors.ENDC)
-                for idx, area in enumerate(self.career_areas, start=1):
-                    print(Colors.WARNING + f"{idx}. {area}" + Colors.ENDC)
-                choice = input("Your choice: ")
-                try:
-                    choice_idx = int(choice) - 1
-                    answer = self.career_areas[choice_idx]
-                except (ValueError, IndexError):
-                    answer = "Invalid choice"
-            elif i == 3:  # Career satisfaction rating
-                print(Colors.OKGREEN + "Select satisfaction rating:" + Colors.ENDC)
-                for idx, factor in enumerate(self.career_satisfaction_ratings, start=1):
-                    print(Colors.WARNING + f"{idx}. {factor}" + Colors.ENDC)
-                choices = input("Your choice(s): ").split()
-                selected_factors = []
-                try:
-                    for choice in choices:
-                        choice_idx = int(choice) - 1
-                        selected_factors.append(
-                            self.career_satisfaction_ratings[choice_idx]
+            if i == 0:  # What is your name?
+                while True:
+                    answer = input(Colors.OKGREEN + f"{question} " + Colors.ENDC)
+                    if answer.strip():  # Check if not empty
+                        self.answers.append(answer)
+                        break
+                    else:
+                        print(
+                            Colors.FAIL + "Please provide a valid name." + Colors.ENDC
                         )
-                    answer = ", ".join(selected_factors)
-                except (ValueError, IndexError):
-                    answer = "Invalid choice"
-            elif i == 5:  # Career change factors question
-                print(Colors.OKGREEN + "Select career change factors:" + Colors.ENDC)
-                for idx, factor in enumerate(self.career_change_factors, start=1):
-                    print(Colors.WARNING + f"{idx}. {factor}" + Colors.ENDC)
-                choices = input("Your choice(s): ").split()
-                selected_factors = []
-                try:
-                    for choice in choices:
+
+            elif i == 1:  # How old are you?
+                while True:
+                    answer = input(Colors.OKGREEN + f"{question} " + Colors.ENDC)
+                    try:
+                        age = int(answer)
+                        if 0 <= age <= 120:  # A reasonable age range
+                            self.answers.append(str(age))
+                            break
+                        else:
+                            print(
+                                Colors.FAIL
+                                + "Please provide a valid age."
+                                + Colors.ENDC
+                            )
+                    except ValueError:
+                        print(Colors.FAIL + "Please provide a valid age." + Colors.ENDC)
+
+            elif i == 2:  # Please select your career area
+                while True:
+                    print(
+                        Colors.OKGREEN + f"{question} (Select a number)" + Colors.ENDC
+                    )
+                    for idx, area in enumerate(self.career_areas, start=1):
+                        print(Colors.WARNING + f"{idx}. {area}" + Colors.ENDC)
+                    choice = input("Your choice: ")
+                    try:
                         choice_idx = int(choice) - 1
-                        selected_factors.append(self.career_change_factors[choice_idx])
-                    answer = ", ".join(selected_factors)
-                except (ValueError, IndexError):
-                    answer = "Invalid choice"
-            else:
-                answer = input(Colors.OKGREEN + f"{question} " + Colors.ENDC)
-            self.answers.append(answer)
+                        if 0 <= choice_idx < len(self.career_areas):
+                            answer = self.career_areas[choice_idx]
+                            self.answers.append(answer)
+                            break
+                        else:
+                            print(
+                                Colors.FAIL
+                                + "Please provide a valid choice."
+                                + Colors.ENDC
+                            )
+                    except ValueError:
+                        print(
+                            Colors.FAIL + "Please provide a valid choice." + Colors.ENDC
+                        )
+
+            elif (
+                i == 3
+            ):  # On a scale of 1 to 5, how satisfied are you with your career?
+                while True:
+                    print(Colors.OKGREEN + f"{question}" + Colors.ENDC)
+                    for idx, rating in enumerate(
+                        self.career_satisfaction_ratings, start=1
+                    ):
+                        print(Colors.WARNING + f"{idx}. {rating}" + Colors.ENDC)
+                    answer = input("Your choice: ")
+                    try:
+                        rating_idx = int(answer) - 1
+                        if 0 <= rating_idx < len(self.career_satisfaction_ratings):
+                            answer = self.career_satisfaction_ratings[rating_idx]
+                            self.answers.append(answer)
+                            break
+                        else:
+                            print(
+                                Colors.FAIL
+                                + "Please provide a valid rating choice."
+                                + Colors.ENDC
+                            )
+                    except ValueError:
+                        print(
+                            Colors.FAIL
+                            + "Please provide a valid rating choice."
+                            + Colors.ENDC
+                        )
+
+            elif i == 4:  # Are you considering a career change? (yes/no)
+                while True:
+                    answer = input(
+                        Colors.OKGREEN + f"{question} " + Colors.ENDC
+                    ).lower()
+                    if answer == "yes" or answer == "no":
+                        self.answers.append(answer)
+                        break
+                    else:
+                        print(
+                            Colors.FAIL
+                            + "Please provide a valid choice (yes or no)."
+                            + Colors.ENDC
+                        )
+
+            elif i == 5:  # If yes, what factors are influencing your decision?
+                while True:
+                    print(
+                        Colors.OKGREEN
+                        + f"{question} (Select numbers separated by space)"
+                        + Colors.ENDC
+                    )
+                    for idx, factor in enumerate(self.career_change_factors, start=1):
+                        print(Colors.WARNING + f"{idx}. {factor}" + Colors.ENDC)
+                    choices = input("Your choice(s): ").split()
+                    selected_factors = []
+                    valid_choices = set(
+                        str(idx)
+                        for idx in range(1, len(self.career_change_factors) + 1)
+                    )
+                    if all(choice in valid_choices for choice in choices):
+                        selected_factors = [
+                            self.career_change_factors[int(choice) - 1]
+                            for choice in choices
+                        ]
+                        answer = ", ".join(selected_factors)
+                        self.answers.append(answer)
+                        break
+                    else:
+                        print(
+                            Colors.FAIL + "Please provide valid choices." + Colors.ENDC
+                        )
+
+            elif i == 6:  # Do you prefer remote work? (yes/no)
+                while True:
+                    answer = input(
+                        Colors.OKGREEN + f"{question} " + Colors.ENDC
+                    ).lower()
+                    if answer == "yes" or answer == "no":
+                        self.answers.append(answer)
+                        break
+                    else:
+                        print(
+                            Colors.FAIL
+                            + "Please provide a valid choice (yes or no)."
+                            + Colors.ENDC
+                        )
 
         print(Colors.OKBLUE + "Thank you for completing the survey!" + Colors.ENDC)
 
@@ -177,20 +275,10 @@ class Survey:
 
     def display_results(self):
         print(Colors.OKBLUE + "Survey Results:" + Colors.ENDC)
-        for question, answer in zip(self.questions, self.answers):
+        for question, answer in zip(self.questions, self.answers[1:]):
             print(
                 f"{Colors.OKGREEN}{question}{Colors.ENDC}\n- {Colors.WARNING}Answer: {answer}{Colors.ENDC}\n"
             )
-
-    def display_statistics_as_bars(statistics):
-        for question, data in statistics.items():
-            print(Colors.HEADER + f"Question: {question}" + Colors.ENDC)
-            for answer, percentage in data.items():
-                bar = "#" * int(percentage)
-                print(
-                    f"{Colors.OKBLUE}{answer}:{Colors.OKGREEN} {bar} {percentage:.2f}%{Colors.ENDC}"
-                )
-            print()
 
     def view_survey_statistics(self):
         try:
@@ -204,7 +292,7 @@ class Survey:
                 if timestamp.startswith("20"):
                     unique_timestamps.add(timestamp)
             survey_count = len(unique_timestamps)
-            print(Colors.OKBLUE + f"\nCount of Surveys: {survey_count}" + Colors.ENDC)
+            print(f"\n{Colors.HEADER}Count of Surveys: {survey_count}{Colors.ENDC}")
 
             total_age = 0
             age_count = 0
@@ -219,7 +307,7 @@ class Survey:
 
             if age_count > 0:
                 average_age = total_age / age_count
-                print(Colors.OKGREEN + f"Average Age: {average_age:.2f}" + Colors.ENDC)
+                print(f"{Colors.OKGREEN}Average Age: {average_age:.2f}{Colors.ENDC}")
 
             # Create bar charts for questions (excluding name and age)
             for i, question in enumerate(self.questions):
@@ -236,23 +324,20 @@ class Survey:
                         else:
                             answer_counts[answer] = 1
 
-                if question not in ["What is your name?", "How old are you?"]:
-                    print(
-                        Colors.HEADER
-                        + f"\nStatistics for Question: {question}"
-                        + Colors.ENDC
-                    )
-                    for answer, count in answer_counts.items():
-                        percentage = (count / total_responses) * 100
+                    if question not in ["What is your name?", "How old are you?"]:
                         print(
-                            Colors.HEADER
-                            + f"\nStatistics for Question: {question}"
-                            + Colors.ENDC
+                            f"\n{Colors.HEADER}Statistics for Question: {question}{Colors.ENDC}"
                         )
-                    print()
+                        for answer, count in answer_counts.items():
+                            percentage = (count / total_responses) * 100
+                            bar = "#" * int(percentage)
+                            print(
+                                f"{Colors.OKBLUE}{answer}:{Colors.OKGREEN} {bar} ({percentage:.2f}%)"
+                            )
+                        print()
 
         except Exception as e:
-            print(Colors.FAIL + "Error analyzing survey data:" + str(e) + Colors.ENDC)
+            print(f"{Colors.FAIL}Error analyzing survey data: {str(e)}{Colors.ENDC}")
 
     @staticmethod
     def main():
