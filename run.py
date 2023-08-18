@@ -34,26 +34,43 @@ column_mapping = {
 }
 
 
+# ANSI color codes
+class Colors:
+    HEADER = "\033[95m"
+    OKBLUE = "\033[94m"
+    OKGREEN = "\033[92m"
+    WARNING = "\033[93m"
+    FAIL = "\033[91m"
+    ENDC = "\033[0m"
+    BOLD = "\033[1m"
+    UNDERLINE = "\033[4m"
+
+
 def display_welcome():
     welcome_text = """
     Welcome to the Career Analyzer!
 
-     ██████╗ █████╗ ██████╗ ███████╗███████╗██████╗      █████╗ ███╗   ██╗ █████╗ ██╗  ██╗   ██╗███████╗███████╗██████╗ 
+      ██████╗ █████╗ ██████╗ ███████╗███████╗██████╗      █████╗ ███╗   ██╗ █████╗ ██╗  ██╗   ██╗███████╗███████╗██████╗
      ██╔════╝██╔══██╗██╔══██╗██╔════╝██╔════╝██╔══██╗    ██╔══██╗████╗  ██║██╔══██╗██║  ╚██╗ ██╔╝╚══███╔╝██╔════╝██╔══██╗
      ██║     ███████║██████╔╝█████╗  █████╗  ██████╔╝    ███████║██╔██╗ ██║███████║██║   ╚████╔╝   ███╔╝ █████╗  ██████╔╝
      ██║     ██╔══██║██╔══██╗██╔══╝  ██╔══╝  ██╔══██╗    ██╔══██║██║╚██╗██║██╔══██║██║    ╚██╔╝   ███╔╝  ██╔══╝  ██╔══██╗
      ╚██████╗██║  ██║██║  ██║███████╗███████╗██║  ██║    ██║  ██║██║ ╚████║██║  ██║███████╗██║   ███████╗███████╗██║  ██║
-     ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝    ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝╚═╝   ╚══════╝╚══════╝╚═╝  ╚═╝                                                                                                                  
+      ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝    ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝╚═╝   ╚══════╝╚══════╝╚═╝  ╚═╝                                                                                                                 
     """
-
-    print(welcome_text)
+    print(Colors.OKBLUE + welcome_text + Colors.ENDC)
 
 
 def display_main_menu():
-    print("\nMain Menu:")
-    print("1. Take the Survey")
-    print("2. View Survey Result Statistics")
-    print("3. Exit")
+    print(Colors.BOLD + Colors.HEADER + "\nMain Menu:" + Colors.ENDC)
+    print(Colors.OKBLUE + "1. " + Colors.OKGREEN + "Take the Survey" + Colors.ENDC)
+    print(
+        Colors.OKBLUE
+        + "2. "
+        + Colors.OKGREEN
+        + "View Survey Result Statistics"
+        + Colors.ENDC
+    )
+    print(Colors.OKBLUE + "3. " + Colors.OKGREEN + "Exit" + Colors.ENDC)
 
 
 class Survey:
@@ -102,13 +119,13 @@ class Survey:
 
     def conduct_survey(self):
         self.answers = []  # Reset the answers list
-        print("Welcome to the survey!")
+        print(Colors.OKBLUE + "Welcome to the survey!" + Colors.ENDC)
         self.add_timestamp()
         for i, question in enumerate(self.questions):
             if i == 2:
-                print(f"{question} (Select a number)")
+                print(Colors.OKGREEN + f"{question} (Select a number)" + Colors.ENDC)
                 for idx, area in enumerate(self.career_areas, start=1):
-                    print(f"{idx}. {area}")
+                    print(Colors.WARNING + f"{idx}. {area}" + Colors.ENDC)
                 choice = input("Your choice: ")
                 try:
                     choice_idx = int(choice) - 1
@@ -116,9 +133,9 @@ class Survey:
                 except (ValueError, IndexError):
                     answer = "Invalid choice"
             elif i == 3:  # Career satisfaction rating
-                print("Select satisfaction rating:")
+                print(Colors.OKGREEN + "Select satisfaction rating:" + Colors.ENDC)
                 for idx, factor in enumerate(self.career_satisfaction_ratings, start=1):
-                    print(f"{idx}. {factor}")
+                    print(Colors.WARNING + f"{idx}. {factor}" + Colors.ENDC)
                 choices = input("Your choice(s): ").split()
                 selected_factors = []
                 try:
@@ -131,9 +148,9 @@ class Survey:
                 except (ValueError, IndexError):
                     answer = "Invalid choice"
             elif i == 5:  # Career change factors question
-                print("Select career change factors:")
+                print(Colors.OKGREEN + "Select career change factors:" + Colors.ENDC)
                 for idx, factor in enumerate(self.career_change_factors, start=1):
-                    print(f"{idx}. {factor}")
+                    print(Colors.WARNING + f"{idx}. {factor}" + Colors.ENDC)
                 choices = input("Your choice(s): ").split()
                 selected_factors = []
                 try:
@@ -144,10 +161,10 @@ class Survey:
                 except (ValueError, IndexError):
                     answer = "Invalid choice"
             else:
-                answer = input(f"{question} ")
+                answer = input(Colors.OKGREEN + f"{question} " + Colors.ENDC)
             self.answers.append(answer)
 
-        print("Thank you for completing the survey!")
+        print(Colors.OKBLUE + "Thank you for completing the survey!" + Colors.ENDC)
 
     def store_results_in_google_sheet(self):
         try:
@@ -159,16 +176,20 @@ class Survey:
             print("Error storing survey results:", str(e))
 
     def display_results(self):
-        print("Survey Results:")
+        print(Colors.OKBLUE + "Survey Results:" + Colors.ENDC)
         for question, answer in zip(self.questions, self.answers):
-            print(f"{question}\n- Answer: {answer}\n")
+            print(
+                f"{Colors.OKGREEN}{question}{Colors.ENDC}\n- {Colors.WARNING}Answer: {answer}{Colors.ENDC}\n"
+            )
 
     def display_statistics_as_bars(statistics):
         for question, data in statistics.items():
-            print(f"Question: {question}")
+            print(Colors.HEADER + f"Question: {question}" + Colors.ENDC)
             for answer, percentage in data.items():
                 bar = "#" * int(percentage)
-                print(f"{answer}: {bar} {percentage:.2f}%")
+                print(
+                    f"{Colors.OKBLUE}{answer}:{Colors.OKGREEN} {bar} {percentage:.2f}%{Colors.ENDC}"
+                )
             print()
 
     def view_survey_statistics(self):
@@ -183,7 +204,7 @@ class Survey:
                 if timestamp.startswith("20"):
                     unique_timestamps.add(timestamp)
             survey_count = len(unique_timestamps)
-            print(f"\nCount of Surveys: {survey_count}")
+            print(Colors.OKBLUE + f"\nCount of Surveys: {survey_count}" + Colors.ENDC)
 
             total_age = 0
             age_count = 0
@@ -198,7 +219,7 @@ class Survey:
 
             if age_count > 0:
                 average_age = total_age / age_count
-                print(f"Average Age: {average_age:.2f}")
+                print(Colors.OKGREEN + f"Average Age: {average_age:.2f}" + Colors.ENDC)
 
             # Create bar charts for questions (excluding name and age)
             for i, question in enumerate(self.questions):
@@ -216,14 +237,22 @@ class Survey:
                             answer_counts[answer] = 1
 
                 if question not in ["What is your name?", "How old are you?"]:
-                    print(f"\nStatistics for Question: {question}")
+                    print(
+                        Colors.HEADER
+                        + f"\nStatistics for Question: {question}"
+                        + Colors.ENDC
+                    )
                     for answer, count in answer_counts.items():
                         percentage = (count / total_responses) * 100
-                        print(f"{answer}: {'#' * int(percentage)} ({percentage:.2f}%)")
+                        print(
+                            Colors.HEADER
+                            + f"\nStatistics for Question: {question}"
+                            + Colors.ENDC
+                        )
                     print()
 
         except Exception as e:
-            print("Error analyzing survey data:", str(e))
+            print(Colors.FAIL + "Error analyzing survey data:" + str(e) + Colors.ENDC)
 
     @staticmethod
     def main():
@@ -231,20 +260,23 @@ class Survey:
         survey = Survey()
         while True:
             display_main_menu()
-            choice = input("Enter your choice: ")
+            choice = input(Colors.BOLD + "Enter your choice: " + Colors.ENDC)
 
             if choice == "1":
-                survey.add_timestamp()
                 survey.conduct_survey()
                 survey.store_results_in_google_sheet()
                 survey.display_results()
             elif choice == "2":
                 survey.view_survey_statistics()
             elif choice == "3":
-                print("Goodbye!")
+                print(Colors.OKGREEN + "Goodbye!" + Colors.ENDC)
                 break
             else:
-                print("Invalid choice. Please select a valid option.")
+                print(
+                    Colors.FAIL
+                    + "Invalid choice. Please select a valid option."
+                    + Colors.ENDC
+                )
 
 
 if __name__ == "__main__":
