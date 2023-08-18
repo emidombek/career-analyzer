@@ -23,6 +23,16 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 
 SHEET = GSPREAD_CLIENT.open("career_analyzer")
 
+column_mapping = {
+    "What is your name?": "Name",
+    "How old are you?": "Age",
+    "Please select your career area:": "CareerType",
+    "On a scale of 1 to 5, how satisfied are you with your career?": "CareerSatisfaction",
+    "Are you considering a career change? (yes/no)": "ConsideringChange",
+    "If yes, what factors are influencing your decision?": "ChangeFactors",
+    "Do you prefer remote work? (yes/no)": "RemoteWorkPreference",
+}
+
 
 def display_welcome():
     welcome_text = """
@@ -162,22 +172,58 @@ class Survey:
             print()
 
     def view_survey_statistics(self):
-        answer_counts = {}
-        total_responses = len(self.answers)
-        for answer in self.answers:
-            if answer in answer_counts:
-                answer_counts[answer] += 1
-            else:
-                answer_counts[answer] = 1
+        try:
+            worksheet = SHEET.get_worksheet(0)
+            data = worksheet.get_all_records()
 
-        percentages = {
-            answer: count / total_responses * 100
-            for answer, count in answer_counts.items()
-        }
+            # Count unique timestamps and survey responses
+            unique_timestamps = set()
+            for row in data:
+                timestamp = row["Timestamp"]
+                if timestamp.startswith("20"):
+                    unique_timestamps.add(timestamp)
+            survey_count = len(unique_timestamps)
+            print(f"\nCount of Surveys: {survey_count}")
 
-        print("\nSurvey Result Statistics:")
-        for answer, percentage in percentages.items():
-            print(f"{answer}: {'#' * int(percentage)} ({percentage:.2f}%)")
+            total_age = 0
+            age_count = 0
+            for row in data:
+                age = row[column_mapping["How old are you?"]]
+                try:
+                    age = int(age)
+                    total_age += age
+                    age_count += 1
+                except ValueError:
+                    pass
+
+            if age_count > 0:
+                average_age = total_age / age_count
+                print(f"Average Age: {average_age:.2f}")
+
+            # Create bar charts for questions (excluding name and age)
+            for i, question in enumerate(self.questions):
+                if question in column_mapping:
+                    column_name = column_mapping[question]
+                    answer_counts = {}
+                    total_responses = len(data)
+                    for row in data:
+                        answer = row[column_name]
+                        if i == 4 or i == 6:
+                            answer = answer.lower()
+                        if answer in answer_counts:
+                            answer_counts[answer] += 1
+                        else:
+                            answer_counts[answer] = 1
+
+                if question not in ["What is your name?", "How old are you?"]:
+                    print(f"\nStatistics for Question: {question}")
+                    for answer, count in answer_counts.items():
+                        percentage = (count / total_responses) * 100
+                        print(f"{answer}: {'#' * int(percentage)} ({percentage:.2f}%)")
+                    print()
+
+        except Exception as e:
+            print("Error analyzing survey data:", str(e))
 
     @staticmethod
     def main():
