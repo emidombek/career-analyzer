@@ -61,7 +61,9 @@ def display_welcome():
 
 
 def display_main_menu():
+    border = "*" * 40  # Creating a border line
     print(Colors.BOLD + Colors.HEADER + "\nMain Menu:" + Colors.ENDC)
+    print(border)  # Print the top border line
     print(Colors.OKBLUE + "1. " + Colors.OKGREEN + "Take the Survey" + Colors.ENDC)
     print(
         Colors.OKBLUE
@@ -71,6 +73,7 @@ def display_main_menu():
         + Colors.ENDC
     )
     print(Colors.OKBLUE + "3. " + Colors.OKGREEN + "Exit" + Colors.ENDC)
+    print(border)  # Print the bottom border line
 
 
 class Survey:
@@ -279,6 +282,7 @@ class Survey:
             print(
                 f"{Colors.OKGREEN}{question}{Colors.ENDC}\n- {Colors.WARNING}Answer: {answer}{Colors.ENDC}\n"
             )
+            print("-" * 40)
 
     def view_survey_statistics(self):
         try:
