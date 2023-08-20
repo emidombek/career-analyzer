@@ -127,7 +127,7 @@ class Survey:
         for i, question in enumerate(self.questions):
             if i == 0:  # What is your name?
                 while True:
-                    answer = input(Colors.OKGREEN + f"{question} " + Colors.ENDC)
+                    answer = input(Colors.OKGREEN + f"{question} \n" + Colors.ENDC)
                     if answer.strip():  # Check if not empty
                         self.answers.append(answer)
                         break
@@ -138,7 +138,7 @@ class Survey:
 
             elif i == 1:  # How old are you?
                 while True:
-                    answer = input(Colors.OKGREEN + f"{question} " + Colors.ENDC)
+                    answer = input(Colors.OKGREEN + f"{question} \n" + Colors.ENDC)
                     try:
                         age = int(answer)
                         if 0 <= age <= 120:  # A reasonable age range
@@ -160,7 +160,7 @@ class Survey:
                     )
                     for idx, area in enumerate(self.career_areas, start=1):
                         print(Colors.WARNING + f"{idx}. {area}" + Colors.ENDC)
-                    choice = input("Your choice: ")
+                    choice = input("Your choice: \n")
                     try:
                         choice_idx = int(choice) - 1
                         if 0 <= choice_idx < len(self.career_areas):
@@ -187,7 +187,7 @@ class Survey:
                         self.career_satisfaction_ratings, start=1
                     ):
                         print(Colors.WARNING + f"{idx}. {rating}" + Colors.ENDC)
-                    answer = input("Your choice: ")
+                    answer = input("Your choice: \n")
                     try:
                         rating_idx = int(answer) - 1
                         if 0 <= rating_idx < len(self.career_satisfaction_ratings):
@@ -210,7 +210,7 @@ class Survey:
             elif i == 4:  # Are you considering a career change? (yes/no)
                 while True:
                     answer = input(
-                        Colors.OKGREEN + f"{question} " + Colors.ENDC
+                        Colors.OKGREEN + f"{question} \n" + Colors.ENDC
                     ).lower()
                     if answer == "yes" or answer == "no":
                         self.answers.append(answer)
@@ -231,7 +231,7 @@ class Survey:
                     )
                     for idx, factor in enumerate(self.career_change_factors, start=1):
                         print(Colors.WARNING + f"{idx}. {factor}" + Colors.ENDC)
-                    choices = input("Your choice(s): ").split()
+                    choices = input("Your choice(s): \n").split()
                     selected_factors = []
                     valid_choices = set(
                         str(idx)
@@ -253,7 +253,7 @@ class Survey:
             elif i == 6:  # Do you prefer remote work? (yes/no)
                 while True:
                     answer = input(
-                        Colors.OKGREEN + f"{question} " + Colors.ENDC
+                        Colors.OKGREEN + f"{question} \n" + Colors.ENDC
                     ).lower()
                     if answer == "yes" or answer == "no":
                         self.answers.append(answer)
@@ -349,7 +349,7 @@ class Survey:
         survey = Survey()
         while True:
             display_main_menu()
-            choice = input(Colors.BOLD + "Enter your choice: " + Colors.ENDC)
+            choice = input(Colors.BOLD + "Enter your choice: \n" + Colors.ENDC)
 
             if choice == "1":
                 survey.conduct_survey()
