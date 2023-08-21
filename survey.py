@@ -30,7 +30,7 @@ column_mapping = {
     "Please select your career area:": "CareerType",
     "On a scale of 1 to 5, how satisfied are you with your career?": "CareerSatisfaction",
     "Are you considering a career change? (yes/no)": "ConsideringChange",
-    "If yes, what factors are influencing your decision?": "ChangeFactors",
+    "What factors influenced your decision?": "ChangeFactors",
     "Do you prefer remote work? (yes/no)": "RemoteWorkPreference",
 }
 
@@ -38,15 +38,6 @@ column_mapping = {
 # Survey class that runs the survey
 class Survey:
     def __init__(self):
-        self.questions = [
-            "What is your name?",
-            "How old are you?",
-            "Please select your career area:",
-            "On a scale of 1 to 5, how satisfied are you with your career?",
-            "Are you considering a career change? (yes/no)",
-            "If yes, what factors are influencing your decision?",
-            "Do you prefer remote work? (yes/no)",
-        ]
         self.career_areas = [
             "Technology",
             "Healthcare",
