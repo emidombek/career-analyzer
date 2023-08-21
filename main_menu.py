@@ -21,14 +21,14 @@ class TerminalMenu:
         data_analyzer = DataAnalyzer()
         data_analyzer.view_survey_statistics()
 
-    def about(self):
-        about_text = """
+    def about(self):  # placeholder text will be changed later
+        about_text = """ 
         Career Analyzer - Terminal Menu
 
         This program allows you to take a survey about your career and view statistics
         about the survey results.
 
-        Created by Your Name
+        Created by Your Name 
 
         """
         print(Colors.OKBLUE + about_text + Colors.ENDC)

@@ -227,8 +227,9 @@ class Survey:
 
         print(Colors.OKBLUE + "Thank you for completing the survey!" + Colors.ENDC)
 
-    def store_results_in_google_sheet(self):  # stores results in the google sheet
+    def store_results_in_google_sheet(self):  # store results in googlesheet
         try:
+            SHEET = get_google_sheet_client()
             worksheet = SHEET.get_worksheet(0)
             values = [self.answers]
             worksheet.append_rows(values)
@@ -236,7 +237,7 @@ class Survey:
         except Exception as e:
             print("Error storing survey results:", str(e))
 
-    def display_results(self):
+    def display_results(self):  # display survey answers to user at the end of survey
         print(Colors.OKBLUE + "Survey Results:" + Colors.ENDC)
         for question, answer in zip(self.questions, self.answers[1:]):
             print(

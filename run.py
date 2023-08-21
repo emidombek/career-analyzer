@@ -1,7 +1,9 @@
-from main_menu import TerminalMenu
+from main_menu import (
+    TerminalMenu,
+)  # Imports class for main main, kept seperate to avoid circular import depencies
 
 
-def display_welcome():
+def display_welcome():  # Welcome message
     welcome_text = """
     Welcome to the Career Analyzer!
 
@@ -28,7 +30,7 @@ def display_welcome():
     print(Colors.OKBLUE + welcome_text + Colors.ENDC)
 
 
-def main():
+def main():  # Runs menu
     menu = TerminalMenu()
     menu.main()
 
