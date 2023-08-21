@@ -1,6 +1,6 @@
 from main_menu import (
     TerminalMenu,
-)  # Imports class for main main, kept seperate to avoid circular import depencies
+)  # Imports class for main main, kept seperate to avoid circular import dependencies
 
 
 def display_welcome():  # Welcome message

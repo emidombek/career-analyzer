@@ -3,7 +3,7 @@ from survey import Survey
 from data_analysis import DataAnalyzer
 
 
-class TerminalMenu:
+class TerminalMenu:  # Class that creates main menu
     def display_menu(self):
         print("\n" + Colors.HEADER + "Welcome to the Career Analyzer!" + Colors.ENDC)
         print("1. " + Colors.OKGREEN + "Take the Survey" + Colors.ENDC)
@@ -11,17 +11,17 @@ class TerminalMenu:
         print("3. " + Colors.OKGREEN + "About" + Colors.ENDC)
         print("4. " + Colors.OKGREEN + "Exit" + Colors.ENDC)
 
-    def take_survey(self):
+    def take_survey(self):  # Runs survey
         survey = Survey()
         survey.conduct_survey()
         survey.store_results_in_google_sheet()
         survey.display_results()
 
-    def view_statistics(self):
+    def view_statistics(self):  # View stats from survey
         data_analyzer = DataAnalyzer()
         data_analyzer.view_survey_statistics()
 
-    def about(self):  # placeholder text will be changed later
+    def about(self):  # About with placeholder text will be changed later
         about_text = """ 
         Career Analyzer - Terminal Menu
 

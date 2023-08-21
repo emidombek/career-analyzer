@@ -4,7 +4,7 @@ from survey import get_google_sheet_client, column_mapping
 SHEET = get_google_sheet_client(creds_file="creds.json", sheet_name="career_analyzer")
 
 
-class DataAnalyzer:
+class DataAnalyzer:  # Class that analyzes survey data stored in the googlespread
     def __init__(self, column_mapping):
         self.column_mapping = column_mapping
 
