@@ -72,6 +72,47 @@ class Survey:
         except Exception as e:
             print("Error adding timestamp:", str(e))
 
+    def handle_name_input(self, question):
+        while True:
+            answer = input(Colors.OKGREEN + f"{question} \n" + Colors.ENDC)
+
+            # Check for minimum length
+            if len(answer.strip()) < 2:  # Minimum 2 characters
+                print(
+                    Colors.FAIL
+                    + "Please provide a valid name (at least 2 characters)."
+                    + Colors.ENDC
+                )
+                continue
+
+            # Check for alphabetic characters only
+            if not answer.isalpha():
+                print(
+                    Colors.FAIL
+                    + "Please provide a valid name (letters only)."
+                    + Colors.ENDC
+                )
+                continue
+
+            # Capitalize the first letter
+            formatted_name = answer.capitalize()
+
+            self.answers.append(formatted_name)
+            break
+
+    def handle_age_input(self, question):
+        while True:
+            answer = input(Colors.OKGREEN + f"{question} \n" + Colors.ENDC)
+            try:
+                age = int(answer)
+                if 18 <= age <= 122:  # A reasonable age range
+                    self.answers.append(str(age))
+                    break
+                else:
+                    print(Colors.FAIL + "Please provide a valid age." + Colors.ENDC)
+            except ValueError:
+                print(Colors.FAIL + "Please provide a valid age." + Colors.ENDC)
+
     def conduct_survey(self):
         self.answers = []
         print(Colors.OKBLUE + "Welcome to the survey!" + Colors.ENDC)
