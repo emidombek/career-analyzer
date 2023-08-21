@@ -4,6 +4,7 @@ import gspread  # Imports Google sheets API
 from google.oauth2.service_account import (
     Credentials,
 )  # Imports Google service account Credentials
+from simple_term_menu import TerminalMenu
 
 
 # function that defines permission scope, credentials location, sheet location
@@ -72,149 +73,55 @@ class Survey:
             print("Error adding timestamp:", str(e))
 
     def conduct_survey(self):
-        self.answers = []  # Reset the answers list
+        self.answers = []
         print(Colors.OKBLUE + "Welcome to the survey!" + Colors.ENDC)
         self.add_timestamp()
+
         for i, question in enumerate(column_mapping.keys()):
-            if i == 0:  # What is your name?
-                while True:
-                    answer = input(Colors.OKGREEN + f"{question} \n" + Colors.ENDC)
-                    if answer.strip():  # Check if not empty
-                        self.answers.append(answer)
-                        break
-                    else:
-                        print(
-                            Colors.FAIL + "Please provide a valid name." + Colors.ENDC
-                        )
-
-            elif i == 1:  # How old are you?
-                while True:
-                    answer = input(Colors.OKGREEN + f"{question} \n" + Colors.ENDC)
-                    try:
-                        age = int(answer)
-                        if 18 <= age <= 122:  # A reasonable age range
-                            self.answers.append(str(age))
-                            break
-                        else:
-                            print(
-                                Colors.FAIL
-                                + "Please provide a valid age."
-                                + Colors.ENDC
-                            )
-                    except ValueError:
-                        print(Colors.FAIL + "Please provide a valid age." + Colors.ENDC)
-
-            elif i == 2:  # Please select your career area
-                while True:
-                    print(
-                        Colors.OKGREEN + f"{question} (Select a number)" + Colors.ENDC
-                    )
-                    for idx, area in enumerate(self.career_areas, start=1):
-                        print(Colors.WARNING + f"{idx}. {area}" + Colors.ENDC)
-                    choice = input("Your choice: \n")
-                    try:
-                        choice_idx = int(choice) - 1
-                        if 0 <= choice_idx < len(self.career_areas):
-                            answer = self.career_areas[choice_idx]
-                            self.answers.append(answer)
-                            break
-                        else:
-                            print(
-                                Colors.FAIL
-                                + "Please provide a valid choice."
-                                + Colors.ENDC
-                            )
-                    except ValueError:
-                        print(
-                            Colors.FAIL + "Please provide a valid choice." + Colors.ENDC
-                        )
+            if question in self.career_areas:
+                # Handle career area selection using TerminalMenu
+                career_area_menu = TerminalMenu(self.career_areas, title=question)
+                selected_index = career_area_menu.show()
+                answer = self.career_areas[selected_index]
+                self.answers.append(answer)
 
             elif (
-                i == 3
-            ):  # On a scale of 1 to 5, how satisfied are you with your career?
-                while True:
-                    print(Colors.OKGREEN + f"{question}" + Colors.ENDC)
-                    for idx, rating in enumerate(
-                        self.career_satisfaction_ratings, start=1
-                    ):
-                        print(Colors.WARNING + f"{idx}. {rating}" + Colors.ENDC)
-                    answer = input("Your choice: \n")
-                    try:
-                        rating_idx = int(answer) - 1
-                        if 0 <= rating_idx < len(self.career_satisfaction_ratings):
-                            answer = self.career_satisfaction_ratings[rating_idx]
-                            self.answers.append(answer)
-                            break
-                        else:
-                            print(
-                                Colors.FAIL
-                                + "Please provide a valid rating choice."
-                                + Colors.ENDC
-                            )
-                    except ValueError:
-                        print(
-                            Colors.FAIL
-                            + "Please provide a valid rating choice."
-                            + Colors.ENDC
-                        )
+                question
+                == "On a scale of 1 to 5, how satisfied are you with your career?"
+            ):
+                # Handle satisfaction rating using TerminalMenu
+                satisfaction_menu = TerminalMenu(
+                    self.career_satisfaction_ratings, title=question
+                )
+                selected_index = satisfaction_menu.show()
+                answer = self.career_satisfaction_ratings[selected_index]
+                self.answers.append(answer)
 
-            elif i == 4:  # Are you considering a career change? (yes/no)
-                while True:
-                    answer = input(
-                        Colors.OKGREEN + f"{question} \n" + Colors.ENDC
-                    ).lower()
-                    if answer == "yes" or answer == "no":
-                        self.answers.append(answer)
-                        break
-                    else:
-                        print(
-                            Colors.FAIL
-                            + "Please provide a valid choice (yes or no)."
-                            + Colors.ENDC
-                        )
+            elif question == "Are you considering a career change? (yes/no)":
+                # Handle yes/no question using TerminalMenu
+                yes_no_menu = TerminalMenu(["yes", "no"], title=question)
+                selected_index = yes_no_menu.show()
+                answer = ["yes", "no"][selected_index]
+                self.answers.append(answer)
 
-            elif i == 5:  # If yes, what factors are influencing your decision?
-                while True:
-                    print(
-                        Colors.OKGREEN
-                        + f"{question} (Select numbers separated by space)"
-                        + Colors.ENDC
-                    )
-                    for idx, factor in enumerate(self.career_change_factors, start=1):
-                        print(Colors.WARNING + f"{idx}. {factor}" + Colors.ENDC)
-                    choices = input("Your choice(s): \n").split()
-                    selected_factors = []
-                    valid_choices = set(
-                        str(idx)
-                        for idx in range(1, len(self.career_change_factors) + 1)
-                    )
-                    if all(choice in valid_choices for choice in choices):
-                        selected_factors = [
-                            self.career_change_factors[int(choice) - 1]
-                            for choice in choices
-                        ]
-                        answer = ", ".join(selected_factors)
-                        self.answers.append(answer)
-                        break
-                    else:
-                        print(
-                            Colors.FAIL + "Please provide valid choices." + Colors.ENDC
-                        )
+            elif question == "If yes, what factors are influencing your decision?":
+                # Handle multiple choice question using TerminalMenu
+                factor_menu = TerminalMenu(
+                    self.career_change_factors, title=question, multi_select=True
+                )
+                selected_indices = factor_menu.show()
+                selected_factors = [
+                    self.career_change_factors[idx] for idx in selected_indices
+                ]
+                answer = ", ".join(selected_factors)
+                self.answers.append(answer)
 
-            elif i == 6:  # Do you prefer remote work? (yes/no)
-                while True:
-                    answer = input(
-                        Colors.OKGREEN + f"{question} \n" + Colors.ENDC
-                    ).lower()
-                    if answer == "yes" or answer == "no":
-                        self.answers.append(answer)
-                        break
-                    else:
-                        print(
-                            Colors.FAIL
-                            + "Please provide a valid choice (yes or no)."
-                            + Colors.ENDC
-                        )
+            elif question == "Do you prefer remote work? (yes/no)":
+                # Handle yes/no question using TerminalMenu
+                yes_no_menu = TerminalMenu(["yes", "no"], title=question)
+                selected_index = yes_no_menu.show()
+                answer = ["yes", "no"][selected_index]
+                self.answers.append(answer)
 
         print(Colors.OKBLUE + "Thank you for completing the survey!" + Colors.ENDC)
 
