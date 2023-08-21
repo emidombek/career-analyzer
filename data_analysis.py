@@ -1,4 +1,4 @@
-from run import Colors
+from constants import Colors  # import colors class from constants module
 from collections import column_mapping
 from survey import get_google_sheet_client
 

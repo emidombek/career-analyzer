@@ -1,5 +1,5 @@
 import datetime
-from run import Colors
+from constants import Colors  # import colors class from constants module
 import gspread
 from google.oauth2.service_account import Credentials
 
