@@ -1,6 +1,5 @@
 from constants import Colors  # import colors class from constants module
-from collections import column_mapping
-from survey import get_google_sheet_client
+from survey import get_google_sheet_client, column_mapping
 
 SHEET = get_google_sheet_client(creds_file="creds.json", sheet_name="career_analyzer")
 
