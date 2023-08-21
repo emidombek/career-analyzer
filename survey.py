@@ -75,7 +75,7 @@ class Survey:
         self.answers = []  # Reset the answers list
         print(Colors.OKBLUE + "Welcome to the survey!" + Colors.ENDC)
         self.add_timestamp()
-        for i, question in enumerate(self.questions):
+        for i, question in enumerate(column_mapping.keys()):
             if i == 0:  # What is your name?
                 while True:
                     answer = input(Colors.OKGREEN + f"{question} \n" + Colors.ENDC)
@@ -230,7 +230,7 @@ class Survey:
 
     def display_results(self):  # Display survey answers to user at the end of survey
         print(Colors.OKBLUE + "Survey Results:" + Colors.ENDC)
-        for question, answer in zip(self.questions, self.answers[1:]):
+        for question, answer in zip(column_mapping.keys(), self.answers[1:]):
             print(
                 f"{Colors.OKGREEN}{question}{Colors.ENDC}\n- {Colors.WARNING}Answer: {answer}{Colors.ENDC}\n"
             )
