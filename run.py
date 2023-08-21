@@ -1,6 +1,5 @@
-from main_menu import (
-    TerminalMenu,
-)  # Imports class for main main, kept seperate to avoid circular import dependencies
+from main_menu import TerminalMenuApp
+from constants import Colors
 
 
 def display_welcome():  # Welcome message
@@ -31,7 +30,7 @@ def display_welcome():  # Welcome message
 
 
 def main():  # Runs menu
-    menu = TerminalMenu()
+    menu = TerminalMenuApp()
     menu.main()
 
 

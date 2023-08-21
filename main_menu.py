@@ -1,15 +1,19 @@
 from constants import Colors
 from survey import Survey
 from data_analysis import DataAnalyzer
+from simple_term_menu import TerminalMenu  # Import the TerminalMenu class
 
 
-class TerminalMenu:  # Class that creates main menu
-    def display_menu(self):
-        print("\n" + Colors.HEADER + "Welcome to the Career Analyzer!" + Colors.ENDC)
-        print("1. " + Colors.OKGREEN + "Take the Survey" + Colors.ENDC)
-        print("2. " + Colors.OKGREEN + "View Survey Result Statistics" + Colors.ENDC)
-        print("3. " + Colors.OKGREEN + "About" + Colors.ENDC)
-        print("4. " + Colors.OKGREEN + "Exit" + Colors.ENDC)
+class TerminalMenuApp:
+    def __init__(self):
+        self.menu = TerminalMenu(
+            [
+                Colors.OKGREEN + "Take the Survey" + Colors.ENDC,
+                Colors.OKGREEN + "View Survey Result Statistics" + Colors.ENDC,
+                Colors.OKGREEN + "About" + Colors.ENDC,
+                Colors.FAIL + "Exit" + Colors.ENDC,
+            ]
+        )
 
     def take_survey(self):  # Runs survey
         survey = Survey()
@@ -35,26 +39,20 @@ class TerminalMenu:  # Class that creates main menu
 
     def main(self):
         while True:
-            self.display_menu()
-            choice = input("Enter your choice: ")
+            selected_index = self.menu.show()
 
-            if choice == "1":
+            if selected_index == 0:
                 self.take_survey()
-            elif choice == "2":
+            elif selected_index == 1:
                 self.view_statistics()
-            elif choice == "3":
+            elif selected_index == 2:
                 self.about()
-            elif choice == "4":
+            elif selected_index == 3:
+                print(Colors.OKGREEN + "Thank You!" + Colors.ENDC)
                 print(Colors.OKGREEN + "Goodbye!" + Colors.ENDC)
                 break
-            else:
-                print(
-                    Colors.FAIL
-                    + "Invalid choice. Please select a valid option."
-                    + Colors.ENDC
-                )
 
 
 if __name__ == "__main__":
-    menu = TerminalMenu()
-    menu.main()
+    app = TerminalMenuApp()
+    app.main()
