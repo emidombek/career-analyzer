@@ -38,7 +38,7 @@ class DataAnalyzer:  # Class that analyzes survey data stored in the googlesprea
                 print(f"{Colors.OKGREEN}Average Age: {average_age:.2f}{Colors.ENDC}")
 
             # Create bar charts for questions (excluding name and age)
-            for i, question in enumerate(self.questions):
+            for i, question in enumerate(column_mapping.keys()):
                 if question in column_mapping:
                     column_name = column_mapping[question]
                     answer_counts = {}
