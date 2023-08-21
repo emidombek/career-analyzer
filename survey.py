@@ -119,7 +119,13 @@ class Survey:
         self.add_timestamp()
 
         for i, question in enumerate(column_mapping.keys()):
-            if question in self.career_areas:
+            if question == "What is your name?":
+                self.handle_name_input(question)
+
+            elif question == "How old are you?":
+                self.handle_age_input(question)
+
+            elif question == "Please select your career area:":
                 # Handle career area selection using TerminalMenu
                 career_area_menu = TerminalMenu(self.career_areas, title=question)
                 selected_index = career_area_menu.show()
@@ -145,16 +151,12 @@ class Survey:
                 answer = ["yes", "no"][selected_index]
                 self.answers.append(answer)
 
-            elif question == "If yes, what factors are influencing your decision?":
-                # Handle multiple choice question using TerminalMenu
-                factor_menu = TerminalMenu(
-                    self.career_change_factors, title=question, multi_select=True
-                )
-                selected_indices = factor_menu.show()
-                selected_factors = [
-                    self.career_change_factors[idx] for idx in selected_indices
-                ]
-                answer = ", ".join(selected_factors)
+            elif question == "What factors influenced your decision?":
+                # Handle single choice question using TerminalMenu
+                factor_menu = TerminalMenu(self.career_change_factors, title=question)
+                selected_index = factor_menu.show()
+                selected_factor = self.career_change_factors[selected_index]
+                answer = self.career_change_factors[selected_index]
                 self.answers.append(answer)
 
             elif question == "Do you prefer remote work? (yes/no)":
