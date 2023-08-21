@@ -6,14 +6,13 @@ from simple_term_menu import TerminalMenu  # Import the TerminalMenu class
 
 class TerminalMenuApp:
     def __init__(self):
-        self.menu = TerminalMenu(
-            [
-                Colors.OKGREEN + "Take the Survey" + Colors.ENDC,
-                Colors.OKGREEN + "View Survey Result Statistics" + Colors.ENDC,
-                Colors.OKGREEN + "About" + Colors.ENDC,
-                Colors.FAIL + "Exit" + Colors.ENDC,
-            ]
-        )
+        self.menu_items = [
+            "Take the Survey",
+            "View Survey Result Statistics",
+            "About",
+            "Exit",
+        ]
+        self.menu = TerminalMenu(self.menu_items)
 
     def take_survey(self):  # Runs survey
         survey = Survey()
