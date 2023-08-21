@@ -101,7 +101,7 @@ class Survey:
                     answer = input(Colors.OKGREEN + f"{question} \n" + Colors.ENDC)
                     try:
                         age = int(answer)
-                        if 0 <= age <= 120:  # A reasonable age range
+                        if 18 <= age <= 122:  # A reasonable age range
                             self.answers.append(str(age))
                             break
                         else:
