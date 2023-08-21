@@ -1,4 +1,4 @@
-class Colors:
+class Colors:  # Class that sets colors and other text decorations
     HEADER = "\033[95m"
     OKBLUE = "\033[94m"
     OKGREEN = "\033[92m"

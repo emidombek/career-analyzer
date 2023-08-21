@@ -1,9 +1,12 @@
-import datetime
-from constants import Colors  # import colors class from constants module
-import gspread
-from google.oauth2.service_account import Credentials
+import datetime  # Imports built in datetime module
+from constants import Colors  # Import colors class from constants module
+import gspread  # Imports Google sheets API
+from google.oauth2.service_account import (
+    Credentials,
+)  # Imports Google service account Credentials
 
 
+# function that defines permission scope, credentials location, sheet location
 def get_google_sheet_client(creds_file="creds.json", sheet_name="career_analyzer"):
     SCOPE = [
         "https://www.googleapis.com/auth/spreadsheets",
@@ -20,6 +23,7 @@ def get_google_sheet_client(creds_file="creds.json", sheet_name="career_analyzer
     return SHEET
 
 
+# list that maps survey questions to columns in the google spreadsheet
 column_mapping = {
     "What is your name?": "Name",
     "How old are you?": "Age",
@@ -31,6 +35,7 @@ column_mapping = {
 }
 
 
+# Survey class that runs the survey
 class Survey:
     def __init__(self):
         self.questions = [
@@ -222,7 +227,7 @@ class Survey:
 
         print(Colors.OKBLUE + "Thank you for completing the survey!" + Colors.ENDC)
 
-    def store_results_in_google_sheet(self):
+    def store_results_in_google_sheet(self):  # stores results in the google sheet
         try:
             worksheet = SHEET.get_worksheet(0)
             values = [self.answers]
