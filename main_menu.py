@@ -2,7 +2,7 @@ from survey import Survey
 from data_analysis import DataAnalyzer, column_mapping
 from simple_term_menu import TerminalMenu  # Import the TerminalMenu class
 import os
-from termcolor import colored, cprint
+from termcolor import colored
 
 
 def clear_console():  # function to clear the console
@@ -47,7 +47,7 @@ class TerminalMenuApp:
         Created by Emilia Dombek
 
         """
-        print(Colors.OKBLUE + about_text + Colors.ENDC)
+        print(colored(about_text, "blue"))
 
     def main(self):
         while True:
@@ -61,8 +61,10 @@ class TerminalMenuApp:
                 self.about()
             elif selected_index == 3:
                 clear_console()
-                print(Colors.OKGREEN + "Thank You!" + Colors.ENDC)
-                print(Colors.OKGREEN + "Goodbye!" + Colors.ENDC)
+                thank_you_message = colored("Thank You!", "green")
+                goodbye_message = colored("Goodbye!", "green")
+                print(thank_you_message)
+                print(goodbye_message)
                 break
 
 
