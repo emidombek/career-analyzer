@@ -3,6 +3,10 @@ from survey import get_google_sheet_client, column_mapping
 
 SHEET = get_google_sheet_client(creds_file="creds.json", sheet_name="career_analyzer")
 
+# Emoji definitions
+BORDER = ":white_large_square:"
+BAR = ":blue_square:"
+
 
 class DataAnalyzer:  # Class that analyzes survey data stored in the googlespread
     def __init__(self, column_mapping):
@@ -35,7 +39,9 @@ class DataAnalyzer:  # Class that analyzes survey data stored in the googlesprea
 
             if age_count > 0:
                 average_age = total_age / age_count
-                print(f"{Colors.OKGREEN}Average Age: {average_age:.2f}{Colors.ENDC}")
+                print(
+                    f"{Colors.OKGREEN}Average Age of Survey Participant: {average_age:.2f}{Colors.ENDC}"
+                )
 
             # Create bar charts for questions (excluding name and age)
             for i, question in enumerate(column_mapping.keys()):
