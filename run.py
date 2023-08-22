@@ -1,5 +1,5 @@
 from main_menu import TerminalMenuApp
-from constants import Colors
+from termcolor import colored
 
 
 def display_welcome():  # Welcome message
@@ -18,7 +18,8 @@ def display_welcome():  # Welcome message
     `--' `--'`--''--' `--`--'`--'.-'  /   `-----' `----'`--'       
                                  `---'                                 
     """
-    print(Colors.OKBLUE + welcome_text + Colors.ENDC)
+    colored_welcome_text = colored(welcome_text, "blue")  # Apply blue color
+    print(colored_welcome_text)
 
 
 def main():  # Runs menu

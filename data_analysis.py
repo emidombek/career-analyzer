@@ -1,5 +1,5 @@
-from constants import Colors  # import colors class from constants module
 from survey import get_google_sheet_client, column_mapping
+from termcolor import colored, cprint
 
 SHEET = get_google_sheet_client(creds_file="creds.json", sheet_name="career_analyzer")
 
