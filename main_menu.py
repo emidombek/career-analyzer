@@ -42,7 +42,8 @@ class TerminalMenuApp:
         The survey asks about job satisfaction and the driving factors behind a potential change in employment 
         as well as preferences in regareds to remote work.
         The data is stored in a google spreadsheet and analyzed.
-        Basic statistics such as count of surveys, average age of participant and answer percentages can be viewed via the 'View Statistics' option. 
+        Basic statistics such as count of surveys, average age of participant and answer percentages can be viewed via 
+        the 'View Statistics' option. 
 
         Created by Emilia Dombek
 
