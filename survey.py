@@ -1,10 +1,10 @@
 import datetime  # Imports built in datetime module
-from constants import Colors  # Import colors class from constants module
 import gspread  # Imports Google sheets API
 from google.oauth2.service_account import (
     Credentials,
 )  # Imports Google service account Credentials
 from simple_term_menu import TerminalMenu
+from termcolor import colored, cprint
 
 
 # function that defines permission scope, credentials location, sheet location
@@ -65,14 +65,16 @@ class Survey:
 
     def add_timestamp(self):
         try:
-            timestamp = datetime.datetime.now()
-            timestamp_str = timestamp.strftime("%Y-%m-%d %H:%M:%S")
+            timestamp = datetime.datetime.now()  # get current datetime
+            timestamp_str = timestamp.strftime("%Y-%m-%d %H:%M:%S")  # format timestamp
             self.answers.append(timestamp_str)  # Append the timestamp to the list
             print("Timestamp added to the survey answers.")
         except Exception as e:
             print("Error adding timestamp:", str(e))
 
-    def handle_name_input(self, question):
+    def handle_name_input(
+        self, question
+    ):  # function that handles name input validation
         while True:
             answer = input(Colors.OKGREEN + f"{question} \n" + Colors.ENDC)
 
@@ -118,7 +120,9 @@ class Survey:
         print(Colors.OKBLUE + "Welcome to the survey!" + Colors.ENDC)
         self.add_timestamp()
 
-        for i, question in enumerate(column_mapping.keys()):
+        for i, question in enumerate(
+            column_mapping.keys()
+        ):  # looping through column_mapping list
             if question == "What is your name?":
                 self.handle_name_input(question)
 

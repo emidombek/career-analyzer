@@ -1,8 +1,8 @@
-from constants import Colors
 from survey import Survey
 from data_analysis import DataAnalyzer, column_mapping
 from simple_term_menu import TerminalMenu  # Import the TerminalMenu class
 import os
+from termcolor import colored, cprint
 
 
 def clear_console():  # function to clear the console
