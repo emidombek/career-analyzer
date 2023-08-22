@@ -4,7 +4,7 @@ from google.oauth2.service_account import (
     Credentials,
 )  # Imports Google service account Credentials
 from simple_term_menu import TerminalMenu
-from termcolor import colored, cprint
+from termcolor import colored
 
 
 # function that defines permission scope, credentials location, sheet location
@@ -76,24 +76,18 @@ class Survey:
         self, question
     ):  # function that handles name input validation
         while True:
-            answer = input(Colors.OKGREEN + f"{question} \n" + Colors.ENDC)
+            answer = input(colored(question + "\n", "green"))
 
             # Check for minimum length
             if len(answer.strip()) < 2:  # Minimum 2 characters
-                print(
-                    Colors.FAIL
-                    + "Please provide a valid name (at least 2 characters)."
-                    + Colors.ENDC
-                )
+                error_message = "Please provide a valid name (at least 2 characters)."
+                print(colored(error_message, "red"))
                 continue
 
             # Check for alphabetic characters only
             if not answer.isalpha():
-                print(
-                    Colors.FAIL
-                    + "Please provide a valid name (letters only)."
-                    + Colors.ENDC
-                )
+                error_message = "Please provide a valid name (letters only)."
+                print(colored(error_message, "red"))
                 continue
 
             # Capitalize the first letter
@@ -104,20 +98,23 @@ class Survey:
 
     def handle_age_input(self, question):
         while True:
-            answer = input(Colors.OKGREEN + f"{question} \n" + Colors.ENDC)
+            answer = input(colored(question + "\n", "green"))
             try:
                 age = int(answer)
                 if 18 <= age <= 122:  # A reasonable age range
                     self.answers.append(str(age))
                     break
                 else:
-                    print(Colors.FAIL + "Please provide a valid age." + Colors.ENDC)
+                    error_message = "Please provide a valid age."
+                    print(colored(error_message, "red"))
             except ValueError:
-                print(Colors.FAIL + "Please provide a valid age." + Colors.ENDC)
+                error_message = "Please provide a valid age."
+                print(colored(error_message, "red"))
 
     def conduct_survey(self):
         self.answers = []
-        print(Colors.OKBLUE + "Welcome to the survey!" + Colors.ENDC)
+        welcome_message = "Welcome to the survey!"
+        print(colored(welcome_message, "blue"))
         self.add_timestamp()
 
         for i, question in enumerate(
@@ -170,7 +167,8 @@ class Survey:
                 answer = ["yes", "no"][selected_index]
                 self.answers.append(answer)
 
-        print(Colors.OKBLUE + "Thank you for completing the survey!" + Colors.ENDC)
+        thank_you_message = "Thank you for completing the survey!"
+        print(colored(thank_you_message, "blue"))
 
     def store_results_in_google_sheet(self):  # Store results in googlesheet
         try:
@@ -182,10 +180,14 @@ class Survey:
         except Exception as e:
             print("Error storing survey results:", str(e))
 
-    def display_results(self):  # Display survey answers to user at the end of survey
-        print(Colors.OKBLUE + "Survey Results:" + Colors.ENDC)
-        for question, answer in zip(column_mapping.keys(), self.answers[1:]):
-            print(
-                f"{Colors.OKGREEN}{question}{Colors.ENDC}\n- {Colors.WARNING}Answer: {answer}{Colors.ENDC}\n"
-            )
+    def display_results(self):
+        survey_results_message = colored("Survey Results:", "blue")
+        print(survey_results_message)
+
+        for question, answer in zip(
+            column_mapping.keys(), self.answers[1:]
+        ):  # pair answers to questions
+            question_colored = colored(question, "green")
+            answer_colored = colored(answer, "yellow")
+            print(f"{question_colored}\n- Answer: {answer_colored}\n")
             print("-" * 40)
