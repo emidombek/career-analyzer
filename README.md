@@ -1,32 +1,24 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Career Analyzer Readme 📚
+![Devices Preview](#)
 
-Welcome,
+[Link to Live Site Here](#)
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **March 14, 2023**
 
-## Reminders
+## 🤔 What is Career Analyzer?
 
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
+ Welcome to Career Analyzer, a Python-based terminal application designed to help you gauge career satisfaction and assess the likelihood of a career or job change. Whether you're curious about your current job's alignment with your aspirations or considering a shift in your professional journey, Career Analyzer is here to assist.
 
-## Creating the Heroku app
+## ⭐ Purpose and goals of the application
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+ - Insightful Self-Assessment: The application's primary goal is to offer users a platform for self-assessment. Through a structured survey, users can evaluate their job satisfaction, identify factors driving potential changes, and express preferences for remote work. This enables users to gain a deeper understanding of their career perspectives.
+ - Data-Driven Exploration: Career Analyzer aims to transform survey responses into meaningful insights. By analyzing survey data, the application generates statistical summaries that highlight trends, patterns, and participant demographics. This data-driven approach assists users in making informed decisions and encourages discussions about career satisfaction within the community.
 
-1. `heroku/python`
-2. `heroku/nodejs`
+## 🧑 User stories
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+ - As a professional, I'll use the Career Analyzer to complete the survey, assess my job satisfaction, and analyze statistics for insights.
+ - Considering a career change, I'll use the Career Analyzer to evaluate factors driving change and determine if it aligns with my aspirations.
+ - To understand my remote work preference, I'll complete the survey and analyze statistics to compare my preference with others.
+Curious About Industry Trends:
+ - Researching career trends, I'll use the Career Analyzer's data analysis to learn about job satisfaction trends across industries.
+ - As a career counselor, I'll recommend the Career Analyzer to clients for self-reflection, growth insights, and career discussions.
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
-
-Connect your GitHub repository and deploy as normal.
-
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
----
-
-Happy coding!
