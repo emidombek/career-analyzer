@@ -15,7 +15,7 @@
 ## 🧑 User stories
 
  - As a professional, I'll use the Career Analyzer to complete the survey, assess my job satisfaction, and analyze statistics for insights.
- - Considering a career change, I'll use the Career Analyzer to evaluate factors driving change and determine if it aligns with my aspirations.
+ - As an individual considering a career change, I'll use the Career Analyzer to evaluate factors driving change and determine if it aligns with my aspirations.
  - To understand my remote work preference, I'll complete the survey and analyze statistics to compare my preference with others.
  - Researching career trends, I'll use the Career Analyzer's data analysis to learn about job satisfaction trends across industries.
  - As a career counselor, I'll recommend the Career Analyzer to clients for self-reflection, growth insights, and career discussions.
@@ -201,4 +201,57 @@ The majority of this program is written in Python 3.11.4 the code is organized i
 
      </details>
 
+## 🚀 Deployment 
+
+### 📖 Deployment Guide
+
+Follow these steps to deploy the Career Analyzer application on your local machine. These instructions assume you have Python and pip installed. For detailed deployment to a hosting platform like Heroku, refer to the platform's documentation.
+
+ 1. Clone the Repository:
+    Clone the Career Analyzer repository to your local machine using the following command:
+
+    `git clone <https://github.com/emidombek/career-analyzer>`
+
+ 2. Create a Virtual Environment (Optional but Recommended):
+
+    `python -m venv career_analyzer_env`
+
+ 3. Activate the Virtual Environment:
+
+    On Windows:
+
+    `career_analyzer_env\Scripts\activate`
+
+    On macOS/Linux:
+
+    `source career_analyzer_env/bin/activate`
+
+ 4. Install Dependencies:
+    Navigate to the project directory and install the required dependencies:
+
+    `cd career-analyzer`
+
+    `pip install -r requirements.txt`
+
+  5. Database Setup:
+     To store and manage survey data, the Career Analyzer application utilizes Google Sheets as a simple and accessible database. Follow these steps to set up the Google Sheets integration:
+
+     - Google Sheets Credentials:
+        Obtain the necessary credentials to access your Google Sheets. This typically involves creating a service account and obtaining a JSON key file.
+
+     - Configure Environment Variables:
+        In the project directory, create a .env file to store your Google Sheets credentials and other configuration data. Ensure you include the required variables to authenticate with the Google Sheets API.
+
+     - Access and Permissions:
+        Share the Google Sheets document with the email address associated with your service account. This step ensures the application has the necessary permissions to read and write data.
+
+        With these steps completed, the Career Analyzer application will be able to interact with Google Sheets as a database for storing and retrieving survey data. Don't forget to update the `get_google_sheet_client` with your credentials and settings in the `survey.py` file. 
+
+  6. Run the Application:
+     Start the application by running:
+      
+      `python run.py`
+
+  7. Deployment to Hosting Platform (Optional):
+      If you plan to deploy to a hosting platform like Heroku, refer to the platform's documentation for detailed deployment steps.
 
