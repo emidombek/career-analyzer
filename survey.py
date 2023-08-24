@@ -36,7 +36,7 @@ column_mapping = {
 }
 
 
-# Survey class that runs the survey
+# Survey class that contains survey logic
 class Survey:
     def __init__(self):
         self.career_areas = [
@@ -63,6 +63,7 @@ class Survey:
         ]
         self.answers = []
 
+    # Function that retrieves datetime and appends it to the list
     def add_timestamp(self):
         try:
             timestamp = datetime.datetime.now()  # get current datetime
@@ -72,9 +73,8 @@ class Survey:
         except Exception as e:
             print("Error adding timestamp:", str(e))
 
-    def handle_name_input(
-        self, question
-    ):  # function that handles name input validation
+    # function that handles name input validation
+    def handle_name_input(self, question):
         while True:
             answer = input(colored(question + "\n", "green"))
 
@@ -96,6 +96,7 @@ class Survey:
             self.answers.append(formatted_name)
             break
 
+    # Function that handles age validation
     def handle_age_input(self, question):
         while True:
             answer = input(colored(question + "\n", "green"))
@@ -111,6 +112,7 @@ class Survey:
                 error_message = "Please provide a valid age."
                 print(colored(error_message, "red"))
 
+    # Function that contains the survey questions and adds answers to the list
     def conduct_survey(self):
         self.answers = []
         welcome_message = "Welcome to the survey!"
@@ -170,7 +172,8 @@ class Survey:
         thank_you_message = "Thank you for completing the survey!"
         print(colored(thank_you_message, "blue"))
 
-    def store_results_in_google_sheet(self):  # Store results in googlesheet
+    # Store results in googlesheet
+    def store_results_in_google_sheet(self):
         try:
             SHEET = get_google_sheet_client()
             worksheet = SHEET.get_worksheet(0)
@@ -180,6 +183,7 @@ class Survey:
         except Exception as e:
             print("Error storing survey results:", str(e))
 
+    # Display the results at the end of the survey
     def display_results(self):
         survey_results_message = colored("Survey Results:", "blue")
         print(survey_results_message)
