@@ -209,29 +209,38 @@ Follow these steps to deploy the Career Analyzer application on your local machi
 
  1. Clone the Repository:
     Clone the Career Analyzer repository to your local machine using the following command:
-
-    `git clone <https://github.com/emidombek/career-analyzer>`
-
+    
+    ```sh
+    git clone https://github.com/emidombek/career-analyzer.git
+    ```
+  
  2. Create a Virtual Environment (Optional but Recommended):
 
-    `python -m venv career_analyzer_env`
+    ```sh
+    python -m venv career_analyzer_env
+    ```
 
  3. Activate the Virtual Environment:
 
     On Windows:
 
-    `career_analyzer_env\Scripts\activate`
+    ```sh
+    career_analyzer_env\Scripts\activate
+    ```
 
     On macOS/Linux:
 
-    `source career_analyzer_env/bin/activate`
+    ```sh
+    source career_analyzer_env/bin/activate
+    ```
 
  4. Install Dependencies:
     Navigate to the project directory and install the required dependencies:
 
-    `cd career-analyzer`
-
-    `pip install -r requirements.txt`
+    ```sh
+    cd career-analyzer
+    pip3 install -r requirements.txt
+    ```
 
   5. Database Setup:
      To store and manage survey data, the Career Analyzer application utilizes Google Sheets as a simple and accessible database. Follow these steps to set up the Google Sheets integration:
@@ -245,13 +254,37 @@ Follow these steps to deploy the Career Analyzer application on your local machi
      - Access and Permissions:
         Share the Google Sheets document with the email address associated with your service account. This step ensures the application has the necessary permissions to read and write data.
 
-        With these steps completed, the Career Analyzer application will be able to interact with Google Sheets as a database for storing and retrieving survey data. Don't forget to update the `get_google_sheet_client` with your credentials and settings in the `survey.py` file. 
+        With these steps completed, the Career Analyzer application will be able to interact with Google Sheets as a database for storing and retrieving survey data. Don't forget to update the `get_google_sheet_client` function with your credentials and settings in the `survey.py` file.
 
   6. Run the Application:
      Start the application by running:
-      
-      `python run.py`
+
+      ```sh
+      python run.py
+      ```
 
   7. Deployment to Hosting Platform (Optional):
       If you plan to deploy to a hosting platform like Heroku, refer to the platform's documentation for detailed deployment steps.
+
+##  Dependencies
+
+The Career Analyzer application relies on the following external Python libraries and packages. To ensure proper functionality, make sure to install these dependencies in your environment:
+
+ - [appnope==0.1.3](https://pypi.org/project/appnope/)
+ - [asttokens==2.2.1](https://pypi.org/project/asttokens/)
+ - [backcall==0.2.0](https://pypi.org/project/backcall/)
+ - [cachetools==5.3.1](https://pypi.org/project/cachetools/)
+ - [certifi==2023.7.22](https://pypi.org/project/certifi/)
+ - [termcolor==2.3.0](https://pypi.org/project/termcolor/)
+ - [tornado==6.3.3](https://pypi.org/project/tornado/)
+ - [traitlets==5.9.0](https://pypi.org/project/traitlets/)
+ - [uritemplate==4.1.1](https://pypi.org/project/uritemplate/)
+ - [urllib3==1.26.16](https://pypi.org/project/urllib3/)
+ - [wcwidth==0.2.6](https://pypi.org/project/wcwidth/)
+
+To install these dependencies, you can use the following command:
+
+ ```sh
+ pip3 install -r requirements.txt
+ ```
 
