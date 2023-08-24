@@ -5,11 +5,12 @@ import os
 from termcolor import colored
 
 
-def clear_console():  # function to clear the console
+# Function to clear the console
+def clear_console():
     os.system("cls" if os.name == "nt" else "clear")
 
 
-class TerminalMenuApp:
+class TerminalMenuApp:  # class that contains menu logic, about text and main function that runs the program
     def __init__(self):
         self.menu_items = [
             "Take the Survey",
@@ -50,6 +51,7 @@ class TerminalMenuApp:
         """
         print(colored(about_text, "blue"))
 
+    # Contains loops that runs the program
     def main(self):
         while True:
             selected_index = self.menu.show()
@@ -69,6 +71,7 @@ class TerminalMenuApp:
                 break
 
 
+# Starts program
 if __name__ == "__main__":
     app = TerminalMenuApp()
     app.main()

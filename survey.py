@@ -73,7 +73,7 @@ class Survey:
         except Exception as e:
             print("Error adding timestamp:", str(e))
 
-    # function that handles name input validation
+    # Function that handles name input validation
     def handle_name_input(self, question):
         while True:
             answer = input(colored(question + "\n", "green"))
