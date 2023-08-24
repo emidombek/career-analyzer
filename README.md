@@ -90,6 +90,8 @@ The majority of this program is written in Python 3.11.4 the code is organized i
     <details>
       <summary>run.py Code Summary</summary>
 
+      <br>
+
       **Code Summary:**
 
       - `display_welcome()`: Defines a function to display a formatted welcome message when the program starts, enhancing user experience.
@@ -98,6 +100,15 @@ The majority of this program is written in Python 3.11.4 the code is organized i
         - Initializes an instance of `TerminalMenuApp` from `main_menu.py`.
         - Calls the `main()` method of the initialized menu app, which controls the flow of the application based on user selections.
       - `if __name__ == "__main__":` ensures that the code under this condition is executed only when the script is run directly, not when imported as a module.
+    
+     <br>
+
+     **Loop in `run.py`:**
+
+      - Type of Loop: `while` loop 
+      - Description: The loop in `run.py` is implemented using a `while` loop. It runs the main menu of the application and continues until the user selects the "Exit" option. Inside the loop, the user can interact with different menu options.
+    
+     <br>
 
       </details>
 
@@ -106,16 +117,27 @@ The majority of this program is written in Python 3.11.4 the code is organized i
     <details>
       <summary>main_menu.py Summary</summary>
 
-      **Technical Summary:**
+      <br>
+      
+      **Code Summary:**
 
       - `clear_console()`: Defines a function to clear the terminal/console screen, enhancing the user interface.
       - `TerminalMenuApp` class: Defines the main application class.
         - `__init__()`: Initializes the class with menu item options and creates an instance of `TerminalMenu`.
         - `take_survey()`: Initiates the survey process by creating an instance of the `Survey` class from `survey.py`.
         - `view_statistics()`: Invokes data analysis by creating an instance of the `DataAnalyzer` class from `data_analysis.py`.
-        - `about()`: Displays an informative "About" text describing the application's purpose and features.
+        - `about()`: Displays an informative `About` text describing the application's purpose and features.
         - `main()`: Main loop that displays the menu and handles user selections, calling the appropriate methods based on the selected option.
       - `if __name__ == "__main__":`: Ensures the main menu is displayed when the script is run directly.
+    
+     <br>
+  
+      **Loop in `main_menu.py` (`TerminalMenuApp` class):**
+
+      - Type of Loop: `while` loop
+      - Description: The `main()` method of the `TerminalMenuApp` class contains a `while` loop. It continuously displays the main menu and waits for user input. The loop iterates until the user chooses the "Exit" option, allowing navigation through various actions.
+    
+     <br>
   
       </details>
 
@@ -124,7 +146,9 @@ The majority of this program is written in Python 3.11.4 the code is organized i
     <details>
      <summary>survey.py Summary</summary>
 
-      **Technical Summary:**
+      <br>
+
+      **Code Summary:**
 
      - `get_google_sheet_client()`: Defines a function to authenticate and obtain a Google Sheets client for data storage.
      - `column_mapping`: Maps survey questions to corresponding columns in the Google Sheets.
@@ -137,15 +161,27 @@ The majority of this program is written in Python 3.11.4 the code is organized i
        - `store_results_in_google_sheet()`: Stores the collected survey responses in a Google Sheet.
        - `display_results()`: Displays the captured survey responses to the user.
      - `if __name__ == "__main__":`: Ensures survey logic is executed only when the script is run directly.
+  
+     <br>
+
+      **Loop in `survey.py` (`Survey` class):**
+
+     - Type of Loop: `for` loop
+     - Description: The `conduct_survey()` method of the `Survey` class uses a `for` loop to iterate through the survey questions defined in the `column_mapping` dictionary. The loop prompts the user to answer each question and handles different question types using conditionals.
+    
+     <br>
 
      </details>
+
 
  4. 📊 **data_analysis.py**: The data_analysis.py file defines the DataAnalyzer class, responsible for analyzing survey data stored in Google Sheets and displaying statistics.
 
     <details>
      <summary>data_analysis.py Summary</summary>
 
-      **Technical Summary:**
+     <br>
+
+      **Code Summary:**
 
      - `answer_color_mapping`: Maps survey answer categories to corresponding emoji or symbols for visualization.
      - `SHEET`: Establishes a connection to the Google Sheet containing survey data.
@@ -153,6 +189,15 @@ The majority of this program is written in Python 3.11.4 the code is organized i
        - `__init__()`: Initializes the class with the `column_mapping` dictionary for mapping columns.
        - `view_survey_statistics()`: Retrieves survey data, calculates and displays statistics for analysis.
      - `if __name__ == "__main__":`: Ensures data analysis logic is executed only when the script is run directly.
+    
+     <br>
+
+      **Loop in `data_analysis.py` (`DataAnalyzer` class):**
+
+     - Type of Loop: `for` loop
+     - Description: The `view_survey_statistics()` method of the `DataAnalyzer` class employs a `for` loop to process survey data and generate statistics for each question in the `column_mapping` dictionary. The loop calculates averages, generates bar charts, and displays response percentages.
+    
+     <br>
 
      </details>
 
