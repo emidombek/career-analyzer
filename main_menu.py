@@ -10,7 +10,8 @@ def clear_console():
     os.system("cls" if os.name == "nt" else "clear")
 
 
-class TerminalMenuApp:  # class that contains menu logic, about text and main function that runs the program
+# Class that contains menu logic/about text
+class TerminalMenuApp:
     def __init__(self):
         self.menu_items = [
             "Take the Survey",
@@ -20,32 +21,36 @@ class TerminalMenuApp:  # class that contains menu logic, about text and main fu
         ]
         self.menu = TerminalMenu(self.menu_items)
 
-    def take_survey(self):  # Runs survey
+    # Runs survey
+    def take_survey(self):
         clear_console()
         survey = Survey()
         survey.conduct_survey()
         survey.store_results_in_google_sheet()
         survey.display_results()
 
+    # View stats from survey
     def view_statistics(self):  # View stats from survey
         clear_console()
-        data_analyzer = DataAnalyzer(column_mapping)  # Pass column_mapping here
+        data_analyzer = DataAnalyzer(column_mapping)
         data_analyzer.view_survey_statistics()
 
-    def about(self):  # About text
+    # About text
+    def about(self):
         clear_console()
-        about_text = """ 
-        Career Analyzer - About 
-
-        This is a Python based terminal programme, 
-        that aims to gauge Career Satisfaction and the likelyhood of a career or job change happening as a result. 
-        There is an option to complete a survey under 'Take Survey'. 
-        The survey asks about job satisfaction and the driving factors behind a potential change in employment 
+        about_text = """
+        Career Analyzer - About
+        This is a Python based terminal programme,
+        that aims to gauge Career Satisfaction
+        and the likelyhood of a career or job change happening as a result.
+        There is an option to complete a survey under 'Take Survey'.
+        The survey asks about job satisfaction
+        and the driving factors behind a potential change in employment
         as well as preferences in regareds to remote work.
         The data is stored in a google spreadsheet and analyzed.
-        Basic statistics such as count of surveys, average age of participant and answer percentages can be viewed via 
-        the 'View Statistics' option. 
-
+        Basic statistics such as count of surveys,
+        average age of participant
+        and answer percentages can be viewed via the 'View Statistics' option.
         Created by Emilia Dombek
 
         """

@@ -7,7 +7,10 @@ from simple_term_menu import TerminalMenu
 from termcolor import colored
 
 
-# function that defines permission scope, credentials location, sheet location
+"""function that defines permission scope,
+credentials location, sheet location"""
+
+
 def get_google_sheet_client(creds_file="creds.json", sheet_name="career_analyzer"):
     SCOPE = [
         "https://www.googleapis.com/auth/spreadsheets",
@@ -67,8 +70,10 @@ class Survey:
     def add_timestamp(self):
         try:
             timestamp = datetime.datetime.now()  # get current datetime
-            timestamp_str = timestamp.strftime("%Y-%m-%d %H:%M:%S")  # format timestamp
-            self.answers.append(timestamp_str)  # Append the timestamp to the list
+            timestamp_str = timestamp.strftime
+            ("%Y-%m-%d %H:%M:%S")  # format timestamp
+            # Append the timestamp to the list
+            self.answers.append(timestamp_str)
             print("Timestamp added to the survey answers.")
         except Exception as e:
             print("Error adding timestamp:", str(e))
@@ -137,7 +142,7 @@ class Survey:
 
             elif (
                 question
-                == "On a scale of 1 to 5, how satisfied are you with your career?"
+                == "On a scale of 1 to 5,how satisfied are you with your career?"
             ):
                 # Handle satisfaction rating using TerminalMenu
                 satisfaction_menu = TerminalMenu(

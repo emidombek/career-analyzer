@@ -25,7 +25,7 @@ answer_color_mapping = {
 }
 
 
-class DataAnalyzer:  # Class that analyzes survey data stored in the googlespread
+class DataAnalyzer:
     def __init__(self, column_mapping):
         self.column_mapping = column_mapping
 
@@ -49,7 +49,7 @@ class DataAnalyzer:  # Class that analyzes survey data stored in the googlesprea
             # Average age calculation
             total_age = 0  # Set to 0
             age_count = 0  # Set to 0
-            for row in data:  # Loop through survey data defined in column_mapping
+            for row in data:
                 age = row[column_mapping["How old are you?"]]
                 try:
                     age = int(age)  # Can age be converted to integer
@@ -58,9 +58,7 @@ class DataAnalyzer:  # Class that analyzes survey data stored in the googlesprea
                 except ValueError:
                     pass
 
-            if (
-                age_count > 0
-            ):  # Checks entries before performing calculation to avoid divding by zero
+            if age_count > 0:
                 average_age = (
                     total_age / age_count
                 )  # Total sum of ages divided by total entries
@@ -105,10 +103,13 @@ class DataAnalyzer:  # Class that analyzes survey data stored in the googlesprea
                     percentage = (count / total_responses) * 100
                     chart_data.append((f"{answer} ({percentage:.2f}%)", count))
 
-                # Find the longest label length for alignment
-                longest_label_length = max(len(label) for label, _ in chart_data)
+                    # Find the longest label length for alignment
+                    longest_label_length = max(len(label) for label, _ in chart_data)
 
-                # Idea for this taken from: https://alexwlchan.net/2018/ascii-bar-charts/
+                """
+                Idea for this taken from:
+                https://alexwlchan.net/2018/ascii-bar-charts/
+                """
                 for label, count in chart_data:
                     # Calculate the percentage and prepare the label
                     percentage = (count / total_responses) * 100

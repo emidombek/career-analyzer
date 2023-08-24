@@ -5,9 +5,9 @@ from termcolor import colored
 def display_welcome():  # Welcome message
     welcome_text = """
 Welcome to the Career Analyzer!
-  ╔═╗┌─┐┬─┐┌─┐┌─┐┬─┐     
-  ║  ├─┤├┬┘├┤ ├┤ ├┬┘     
-  ╚═╝┴ ┴┴└─└─┘└─┘┴└─     
+  ╔═╗┌─┐┬─┐┌─┐┌─┐┬─┐
+  ║  ├─┤├┬┘├┤ ├┤ ├┬┘
+  ╚═╝┴ ┴┴└─└─┘└─┘┴└─
   ╔═╗┌┐┌┌─┐┬ ┬ ┬┌─┐┌─┐┬─┐
   ╠═╣│││├─┤│ └┬┘┌─┘├┤ ├┬┘
   ╩ ╩┘└┘┴ ┴┴─┘┴ └─┘└─┘┴└─
