@@ -72,7 +72,6 @@ Consists of four main Python files:
    - [prompt-toolkit](https://python-prompt-toolkit.readthedocs.io/en/master/) - Offers tools for building interactive command-line applications, enhancing user input and interaction.
    - [ipython](https://ipython.readthedocs.io/en/stable/) - Provides an interactive Python shell for a more user-friendly and feature-rich terminal experience.
     - [packaging](https://packaging.python.org/en/latest/) - Used for packaging and distributing Python software, potentially for distribution of your application.
-   - [pygments](pygments.org) - A syntax highlighting library that could be used for displaying code snippets with color syntax in the terminal.
 
 ## 🤖 Code
 
@@ -196,6 +195,8 @@ The majority of this program is written in Python 3.11.4 the code is organized i
 
      - Type of Loop: `for` loop
      - Description: The `view_survey_statistics()` method of the `DataAnalyzer` class employs a `for` loop to process survey data and generate statistics for each question in the `column_mapping` dictionary. The loop calculates averages, generates bar charts, and displays response percentages.
+     
+     The idea for this was taken from [here](https://alexwlchan.net/2018/ascii-bar-charts/). Edited to allow for emojis.
     
      <br>
 
@@ -266,25 +267,79 @@ Follow these steps to deploy the Career Analyzer application on your local machi
   7. Deployment to Hosting Platform (Optional):
       If you plan to deploy to a hosting platform like Heroku, refer to the platform's documentation for detailed deployment steps.
 
-##  Dependencies
+##  📦 Dependencies
 
 The Career Analyzer application relies on the following external Python libraries and packages. To ensure proper functionality, make sure to install these dependencies in your environment:
 
- - [appnope==0.1.3](https://pypi.org/project/appnope/)
- - [asttokens==2.2.1](https://pypi.org/project/asttokens/)
- - [backcall==0.2.0](https://pypi.org/project/backcall/)
- - [cachetools==5.3.1](https://pypi.org/project/cachetools/)
- - [certifi==2023.7.22](https://pypi.org/project/certifi/)
- - [termcolor==2.3.0](https://pypi.org/project/termcolor/)
- - [tornado==6.3.3](https://pypi.org/project/tornado/)
- - [traitlets==5.9.0](https://pypi.org/project/traitlets/)
- - [uritemplate==4.1.1](https://pypi.org/project/uritemplate/)
- - [urllib3==1.26.16](https://pypi.org/project/urllib3/)
- - [wcwidth==0.2.6](https://pypi.org/project/wcwidth/)
+ <details>
+   <summary>Click here to view a list of Dependencies found in the requirements.txt</summary>
+
+   <br>
+
+   - [appnope==0.1.3](https://pypi.org/project/appnope/)
+   - [asttokens==2.2.1](https://pypi.org/project/asttokens/)
+   - [backcall==0.2.0](https://pypi.org/project/backcall/)
+   - [cachetools==5.3.1](https://pypi.org/project/cachetools/)
+   - [certifi==2023.7.22](https://pypi.org/project/certifi/)
+   - [charset-normalizer==3.2.0](https://pypi.org/project/charset-normalizer/)
+   - [comm==0.1.4](https://pypi.org/project/comm/)
+   - [debugpy==1.6.7.post1](https://pypi.org/project/debugpy/)
+   - [decorator==5.1.1](https://pypi.org/project/decorator/)
+   - [executing==1.2.0](https://pypi.org/project/executing/)
+   - [google-api-core==2.11.1](https://pypi.org/project/google-api-core/)
+   - [google-api-python-client==2.96.0](https://pypi.org/project/google-api-python-client/)
+   - [google-auth==2.22.0](https://pypi.org/project/google-auth/)
+   - [google-auth-httplib2==0.1.0](https://pypi.org/project/google-auth-httplib2/)
+   - [google-auth-oauthlib==1.0.0](https://pypi.org/project/google-auth-oauthlib/)
+   - [googleapis-common-protos==1.60.0](https://pypi.org/project/googleapis-common-protos/)
+   - [gspread==5.10.0](https://pypi.org/project/gspread/)
+   - [httplib2==0.22.0](https://pypi.org/project/httplib2/)
+   - [idna==3.4](https://pypi.org/project/idna/)
+   - [ipykernel==6.25.1](https://pypi.org/project/ipykernel/)
+   - [ipython==8.14.0](https://pypi.org/project/ipython/)
+   - [jedi==0.19.0](https://pypi.org/project/jedi/)
+   - [nest-asyncio==1.5.7](https://pypi.org/project/nest-asyncio/)
+   - [oauthlib==3.2.2](https://pypi.org/project/oauthlib/)
+   - [packaging==23.1](https://pypi.org/project/packaging/)
+   - [parso==0.8.3](https://pypi.org/project/parso/)
+   - [pexpect==4.8.0](https://pypi.org/project/pexpect/)
+   - [pickleshare==0.7.5](https://pypi.org/project/pickleshare/)
+   - [platformdirs==3.10.0](https://pypi.org/project/platformdirs/)
+   - [prompt-toolkit==3.0.39](https://pypi.org/project/prompt-toolkit/)
+   - [protobuf==4.24.0](https://pypi.org/project/protobuf/)
+   - [psutil==5.9.5](https://pypi.org/project/psutil/)
+   - [ptyprocess==0.7.0](https://pypi.org/project/ptyprocess/)
+   - [pure-eval==0.2.2](https://pypi.org/project/pure-eval/)
+   - [pyasn1==0.5.0](https://pypi.org/project/pyasn1/)
+   - [pyasn1-modules==0.3.0](https://pypi.org/project/pyasn1-modules/)
+   - [Pygments==2.16.1](https://pypi.org/project/Pygments/)
+   - [pyparsing==3.1.1](https://pypi.org/project/pyparsing/)
+   - [python-dateutil==2.8.2](https://pypi.org/project/python-dateutil/)
+   - [pyzmq==25.1.1](https://pypi.org/project/pyzmq/)
+   - [requests==2.31.0](https://pypi.org/project/requests/)
+   - [requests-oauthlib==1.3.1](https://pypi.org/project/requests-oauthlib/)
+   - [rsa==4.9](https://pypi.org/project/rsa/)
+   - [simple-term-menu==1.6.1](https://pypi.org/project/simple-term-menu/)
+   - [six==1.16.0](https://pypi.org/project/six/)
+   - [stack-data==0.6.2](https://pypi.org/project/stack-data/)
+   - [termcolor==2.3.0](https://pypi.org/project/termcolor/)
+   - [tornado==6.3.3](https://pypi.org/project/tornado/)
+   - [traitlets==5.9.0](https://pypi.org/project/traitlets/)
+   - [uritemplate==4.1.1](https://pypi.org/project/uritemplate/)
+   - [urllib3==1.26.16](https://pypi.org/project/urllib3/)
+   - [wcwidth==0.2.6](https://pypi.org/project/wcwidth/)
+  
+   <br>
+
+   </details>
 
 To install these dependencies, you can use the following command:
 
  ```sh
  pip3 install -r requirements.txt
  ```
+
+## 📝 Testing 
+
+
 

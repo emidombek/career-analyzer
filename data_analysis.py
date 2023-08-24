@@ -108,6 +108,7 @@ class DataAnalyzer:  # Class that analyzes survey data stored in the googlesprea
                 # Find the longest label length for alignment
                 longest_label_length = max(len(label) for label, _ in chart_data)
 
+                # Idea for this taken from: https://alexwlchan.net/2018/ascii-bar-charts/
                 for label, count in chart_data:
                     # Calculate the percentage and prepare the label
                     percentage = (count / total_responses) * 100
