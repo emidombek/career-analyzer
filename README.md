@@ -339,7 +339,34 @@ To install these dependencies, you can use the following command:
  pip3 install -r requirements.txt
  ```
 
+
 ## 📝 Testing 
+
+ ### ✅ Validation
+
+ All 4 Python files (run.py, main_menu.py, survey.py, data_analysis.py) passed the [CI Python Linter](https://pep8ci.herokuapp.com/) with no errors. 
+
+  <details>
+   <summary>Click here to view validation screenshots for CI Python Linter</summary>
+
+   <br>
+  
+   - run.py results:
+   ![Screenshot of the run.py results](#)
+
+   - main_menu.py results:
+   ![Screenshot of the main_menu.py results](#)
+
+   - survey.py results:
+   ![Screenshot of the survey.py results](#)
+
+   - data_analysis.py results:
+  
+   ![Screenshot of the data_analysis.py results](#)
+
+   <br>
+
+   </details>
 
 
 
