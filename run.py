@@ -16,11 +16,12 @@ Welcome to the Career Analyzer!
     print(colored_welcome_text)
 
 
-def main():  # Runs menu
+def main():  # Runs main function
     display_welcome()  # Display the welcome message
     menu = TerminalMenuApp()
     menu.main()
 
 
+# Entry point
 if __name__ == "__main__":
     main()
