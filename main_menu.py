@@ -39,6 +39,7 @@ class TerminalMenuApp:
         survey.store_results_in_google_sheet()
         survey.display_results()
         self.handle_go_back()
+        clear_console()
 
     # View stats from survey
     def view_statistics(self):  # View stats from survey
@@ -46,6 +47,7 @@ class TerminalMenuApp:
         data_analyzer = DataAnalyzer(column_mapping)
         data_analyzer.view_survey_statistics()
         self.handle_go_back()
+        clear_console()
 
     # About text
     def about(self):
@@ -71,10 +73,25 @@ class TerminalMenuApp:
         """
         print(colored(about_text, "cyan"))
         self.handle_go_back()
+        clear_console()
 
     # Contains loops that runs the program
     def main(self):
         while True:
+            print(
+                colored(
+                    """
+Welcome to the Career Analyzer!
+  ╔═╗┌─┐┬─┐┌─┐┌─┐┬─┐
+  ║  ├─┤├┬┘├┤ ├┤ ├┬┘
+  ╚═╝┴ ┴┴└─└─┘└─┘┴└─
+  ╔═╗┌┐┌┌─┐┬ ┬ ┬┌─┐┌─┐┬─┐
+  ╠═╣│││├─┤│ └┬┘┌─┘├┤ ├┬┘
+  ╩ ╩┘└┘┴ ┴┴─┘┴ └─┘└─┘┴└─
+""",
+                    "blue",
+                )
+            )
             selected_index = self.menu.show()
 
             if selected_index == 0:
