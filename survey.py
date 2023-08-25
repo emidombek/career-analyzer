@@ -11,7 +11,9 @@ from termcolor import colored
 credentials location, sheet location"""
 
 
-def get_google_sheet_client(creds_file="creds.json", sheet_name="career_analyzer"):
+def get_google_sheet_client(
+    creds_file="creds.json", sheet_name="career_analyzer"
+):
     SCOPE = [
         "https://www.googleapis.com/auth/spreadsheets",
         "https://www.googleapis.com/auth/drive.file",
@@ -85,7 +87,9 @@ class Survey:
 
             # Check for minimum length
             if len(answer.strip()) < 2:  # Minimum 2 characters
-                error_message = "Please provide a valid name (at least 2 characters)."
+                error_message = (
+                    "Please provide a valid name (at least 2 characters)."
+                )
                 print(colored(error_message, "red"))
                 continue
 
@@ -135,7 +139,9 @@ class Survey:
 
             elif question == "Please select your career area:":
                 # Handle career area selection using TerminalMenu
-                career_area_menu = TerminalMenu(self.career_areas, title=question)
+                career_area_menu = TerminalMenu(
+                    self.career_areas, title=question
+                )
                 selected_index = career_area_menu.show()
                 answer = self.career_areas[selected_index]
                 self.answers.append(answer)
@@ -161,7 +167,9 @@ class Survey:
 
             elif question == "What factors influenced your decision?":
                 # Handle single choice question using TerminalMenu
-                factor_menu = TerminalMenu(self.career_change_factors, title=question)
+                factor_menu = TerminalMenu(
+                    self.career_change_factors, title=question
+                )
                 selected_index = factor_menu.show()
                 selected_factor = self.career_change_factors[selected_index]
                 answer = self.career_change_factors[selected_index]

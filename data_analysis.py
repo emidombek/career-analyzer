@@ -1,7 +1,9 @@
 from survey import get_google_sheet_client, column_mapping
 from termcolor import colored
 
-SHEET = get_google_sheet_client(creds_file="creds.json", sheet_name="career_analyzer")
+SHEET = get_google_sheet_client(
+    creds_file="creds.json", sheet_name="career_analyzer"
+)
 
 answer_color_mapping = {
     "Healthcare": "🟥",
@@ -41,7 +43,9 @@ class DataAnalyzer:
                 if timestamp.startswith("20"):  # Check if entry is timestamp
                     unique_timestamps.add(timestamp)  # Add data
             survey_count = len(unique_timestamps)  # Count timestamps
-            survey_count_text = colored(f"Count of Surveys: {survey_count}", "cyan")
+            survey_count_text = colored(
+                f"Count of Surveys: {survey_count}", "cyan"
+            )
             print(survey_count_text)
             # Print empty line
             print()
@@ -63,7 +67,8 @@ class DataAnalyzer:
                     total_age / age_count
                 )  # Total sum of ages divided by total entries
                 avg_age_text = colored(
-                    f"Average Age of Survey Participant: {average_age:.2f}", "green"
+                    f"Average Age of Survey Participant: {average_age:.2f}",
+                    "green",
                 )
                 print(avg_age_text)
                 # Print empty line
@@ -84,7 +89,9 @@ class DataAnalyzer:
                             answer_counts[answer] = 1
 
                 # Get the index of the current question_column
-                column_index = list(self.column_mapping.values()).index(question_column)
+                column_index = list(self.column_mapping.values()).index(
+                    question_column
+                )
 
                 # Get the corresponding question title from column_mapping
                 question_title = list(self.column_mapping.keys())[column_index]
@@ -104,7 +111,9 @@ class DataAnalyzer:
                     chart_data.append((f"{answer} ({percentage:.2f}%)", count))
 
                     # Find the longest label length for alignment
-                    longest_label_length = max(len(label) for label, _ in chart_data)
+                    longest_label_length = max(
+                        len(label) for label, _ in chart_data
+                    )
 
                 """
                 Idea for this taken from:
@@ -136,5 +145,7 @@ class DataAnalyzer:
                 print()
 
         except Exception as e:
-            error_message = colored(f"Error analyzing survey data: {str(e)}", "red")
+            error_message = colored(
+                f"Error analyzing survey data: {str(e)}", "red"
+            )
             print(error_message)
