@@ -1,4 +1,5 @@
 from survey import get_google_sheet_client, column_mapping
+import time
 from termcolor import colored
 
 SHEET = get_google_sheet_client(
@@ -51,6 +52,7 @@ class DataAnalyzer:
             print(survey_count_text)
             # Print empty line
             print()
+            time.sleep(1)
 
             # Average age calculation
             total_age = 0  # Set to 0
@@ -77,6 +79,7 @@ class DataAnalyzer:
                 print(avg_age_text)
                 # Print empty line
                 print()
+                time.sleep(1)
 
             # Extract data from the Google Spreadsheet using column_mapping
             question_columns = list(self.column_mapping.values())[2:]
@@ -153,6 +156,7 @@ class DataAnalyzer:
                         f"{formatted_label} ▏ {count:#4d} {bar}{space}"
                     )
                 print()
+                time.sleep(2)  # Delay for 2 seconds
 
         except Exception as e:
             error_message = colored(
