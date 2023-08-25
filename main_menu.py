@@ -23,6 +23,14 @@ class TerminalMenuApp:
         ]
         self.menu = TerminalMenu(self.menu_items)
 
+    # Function to handle user input for going back
+    def handle_go_back(self):
+        go_back_menu = TerminalMenu(
+            ["Back to Main Menu"], title="Go Back"
+        )
+        selected_index = go_back_menu.show()
+        return selected_index == 0
+
     # Runs survey
     def take_survey(self):
         clear_console()
@@ -30,12 +38,14 @@ class TerminalMenuApp:
         survey.conduct_survey()
         survey.store_results_in_google_sheet()
         survey.display_results()
+        self.handle_go_back()
 
     # View stats from survey
     def view_statistics(self):  # View stats from survey
         clear_console()
         data_analyzer = DataAnalyzer(column_mapping)
         data_analyzer.view_survey_statistics()
+        self.handle_go_back()
 
     # About text
     def about(self):
@@ -60,6 +70,7 @@ class TerminalMenuApp:
 
         """
         print(colored(about_text, "cyan"))
+        self.handle_go_back()
 
     # Contains loops that runs the program
     def main(self):
