@@ -4,6 +4,7 @@ from termcolor import colored  # Adds colored text and emoji support
 
 def display_welcome():  # Welcome message
     welcome_text = """
+Welcome to the Career Analyzer!
   ╔═╗┌─┐┬─┐┌─┐┌─┐┬─┐
   ║  ├─┤├┬┘├┤ ├┤ ├┬┘
   ╚═╝┴ ┴┴└─└─┘└─┘┴└─
