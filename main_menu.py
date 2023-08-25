@@ -54,7 +54,7 @@ class TerminalMenuApp:
         Created by Emilia Dombek
 
         """
-        print(colored(about_text, "blue"))
+        print(colored(about_text, "cyan"))
 
     # Contains loops that runs the program
     def main(self):
