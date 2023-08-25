@@ -103,7 +103,9 @@ class Survey:
                 continue
 
             if not all(c.isalpha() or c.isspace() for c in answer):
-                error_message = "Please provide a valid name (letters and spaces only)."
+                error_message = (
+                    "Please provide a valid name (letters only)."
+                )
                 print(colored(error_message, "red"))
                 continue
 
