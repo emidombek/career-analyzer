@@ -96,7 +96,6 @@ class TerminalMenuApp:
             print(
                 colored(
                     """
-Welcome to the Career Analyzer!
   ╔═╗┌─┐┬─┐┌─┐┌─┐┬─┐
   ║  ├─┤├┬┘├┤ ├┤ ├┬┘
   ╚═╝┴ ┴┴└─└─┘└─┘┴└─
