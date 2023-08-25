@@ -142,7 +142,7 @@ class Survey:
 
             elif (
                 question
-                == "On a scale of 1 to 5,how satisfied are you with your career?"
+                == "On a scale of 1 to 5, how satisfied are you with your career?"
             ):
                 # Handle satisfaction rating using TerminalMenu
                 satisfaction_menu = TerminalMenu(

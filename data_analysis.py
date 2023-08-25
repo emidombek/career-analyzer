@@ -84,7 +84,7 @@ class DataAnalyzer:
                             answer_counts[answer] = 1
 
                 # Get the index of the current question_column
-                column_index = question_columns.index(question_column)
+                column_index = list(self.column_mapping.values()).index(question_column)
 
                 # Get the corresponding question title from column_mapping
                 question_title = list(self.column_mapping.keys())[column_index]
