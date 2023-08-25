@@ -1,5 +1,5 @@
-from main_menu import TerminalMenuApp
-from termcolor import colored
+from main_menu import TerminalMenuApp  # Adds selectable menu
+from termcolor import colored  # Adds colored text and emoji support
 
 
 def display_welcome():  # Welcome message
@@ -18,7 +18,11 @@ Welcome to the Career Analyzer!
     print(colored_welcome_text)
 
 
-def main():  # Runs main function
+def main():
+    """
+    function that defines permission scope,
+    credentials location, sheet location
+    """
     display_welcome()  # Display the welcome message
     menu = TerminalMenuApp()
     menu.main()

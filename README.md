@@ -68,10 +68,8 @@ Consists of four main Python files:
    - [GSpread](https://docs.gspread.org/en/v5.10.0/) - A library for working with Google Sheets and Google Drive, used for storing and retrieving survey data.
    - [simple-term-menu](https://pypi.org/project/simple-term-menu/) - Used for creating interactive terminal menus to facilitate user navigation within the application.
    - [termcolor](https://pypi.org/project/termcolor/) - Enables terminal text coloring for enhancing the user interface and readability.
-   - [requests](https://pypi.org/project/requests/) - A popular library for making HTTP requests, which may be used for various purposes within the application.
-   - [prompt-toolkit](https://python-prompt-toolkit.readthedocs.io/en/master/) - Offers tools for building interactive command-line applications, enhancing user input and interaction.
-   - [ipython](https://ipython.readthedocs.io/en/stable/) - Provides an interactive Python shell for a more user-friendly and feature-rich terminal experience.
-    - [packaging](https://packaging.python.org/en/latest/) - Used for packaging and distributing Python software, potentially for distribution of your application.
+  
+  These are the core Technologies used in this application. Please see the [Dependencies](#📦-dependencies) section for a full list of items found in the `requirements.txt` file. Due to my OS several items that are not needed to run Application are included in the `requirements.txt`. You can install the entire `requirements.txt` or only the core technologies listed above.
 
 ## 🤖 Code
 

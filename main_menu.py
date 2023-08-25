@@ -4,7 +4,7 @@ from simple_term_menu import (
     TerminalMenu,
 )  # Import the TerminalMenu class
 import os
-from termcolor import colored
+from termcolor import colored  # Adds colored text and emoji support
 
 
 # Function to clear the console
@@ -23,8 +23,10 @@ class TerminalMenuApp:
         ]
         self.menu = TerminalMenu(self.menu_items)
 
-    # Function to handle user input for going back
     def handle_go_back(self):
+        """
+        Function to handle user input for going back
+        """
         go_back_menu = TerminalMenu(
             ["Back to Main Menu"], title="Go Back"
         )
@@ -33,6 +35,9 @@ class TerminalMenuApp:
 
     # Runs survey
     def take_survey(self):
+        """
+        Function to run sequence of take survey events
+        """
         clear_console()
         survey = Survey()
         survey.conduct_survey()
@@ -41,8 +46,10 @@ class TerminalMenuApp:
         self.handle_go_back()
         clear_console()
 
-    # View stats from survey
-    def view_statistics(self):  # View stats from survey
+    def view_statistics(self):
+        """
+        Function to run sequence of view statistics events
+        """
         clear_console()
         data_analyzer = DataAnalyzer(column_mapping)
         data_analyzer.view_survey_statistics()
@@ -51,6 +58,10 @@ class TerminalMenuApp:
 
     # About text
     def about(self):
+        """
+        Function to run sequence of about events
+        Displays about text
+        """
         clear_console()
         about_text = """
         ╔═╗┌─┐┬─┐┌─┐┌─┐┬─┐  ╔═╗┌┐┌┌─┐┬ ┬ ┬┌─┐┌─┐┬─┐
@@ -75,8 +86,12 @@ class TerminalMenuApp:
         self.handle_go_back()
         clear_console()
 
-    # Contains loops that runs the program
     def main(self):
+        """
+        Function that contains loops that runs the program
+        Displays Text and Main Menu
+        Handles Menu selections
+        """
         while True:
             print(
                 colored(
