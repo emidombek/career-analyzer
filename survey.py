@@ -3,15 +3,17 @@ import gspread  # Imports Google sheets API
 from google.oauth2.service_account import (
     Credentials,
 )  # Imports Google service account Credentials
-from simple_term_menu import TerminalMenu
-from termcolor import colored
+from simple_term_menu import TerminalMenu  # Adds selectable menu
+from termcolor import colored  # Adds colored text
 
 
 def get_google_sheet_client(
     creds_file="creds.json", sheet_name="career_analyzer"
 ):
-    """function that defines permission scope,
-    credentials location, sheet location"""
+    """
+    Function that defines permission scope,
+    credentials location, sheet location
+    """
 
     SCOPE = [
         "https://www.googleapis.com/auth/spreadsheets",
