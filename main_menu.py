@@ -39,7 +39,10 @@ class TerminalMenuApp:
     def about(self):
         clear_console()
         about_text = """
-        Career Analyzer - About
+        ╔═╗┌─┐┬─┐┌─┐┌─┐┬─┐  ╔═╗┌┐┌┌─┐┬ ┬ ┬┌─┐┌─┐┬─┐
+        ║  ├─┤├┬┘├┤ ├┤ ├┬┘  ╠═╣│││├─┤│ └┬┘┌─┘├┤ ├┬┘
+        ╚═╝┴ ┴┴└─└─┘└─┘┴└─  ╩ ╩┘└┘┴ ┴┴─┘┴ └─┘└─┘┴└─
+        - About
         This is a Python based terminal programme,
         that aims to gauge Career Satisfaction
         and the likelyhood of a career or job change happening as a result.
