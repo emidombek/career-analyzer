@@ -1,6 +1,8 @@
 from survey import Survey
 from data_analysis import DataAnalyzer, column_mapping
-from simple_term_menu import TerminalMenu  # Import the TerminalMenu class
+from simple_term_menu import (
+    TerminalMenu,
+)  # Import the TerminalMenu class
 import os
 from termcolor import colored
 

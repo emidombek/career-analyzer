@@ -12,7 +12,9 @@ Welcome to the Career Analyzer!
   ╠═╣│││├─┤│ └┬┘┌─┘├┤ ├┬┘
   ╩ ╩┘└┘┴ ┴┴─┘┴ └─┘└─┘┴└─
     """
-    colored_welcome_text = colored(welcome_text, "blue")  # Apply blue color
+    colored_welcome_text = colored(
+        welcome_text, "blue"
+    )  # Apply blue color
     print(colored_welcome_text)
 
 

@@ -40,7 +40,9 @@ class DataAnalyzer:
             unique_timestamps = set()  # Reset variable
             for row in data:  # Loop through Timestamp data
                 timestamp = row["Timestamp"]  # Map to spreadsheet row
-                if timestamp.startswith("20"):  # Check if entry is timestamp
+                if timestamp.startswith(
+                    "20"
+                ):  # Check if entry is timestamp
                     unique_timestamps.add(timestamp)  # Add data
             survey_count = len(unique_timestamps)  # Count timestamps
             survey_count_text = colored(
@@ -58,7 +60,9 @@ class DataAnalyzer:
                 try:
                     age = int(age)  # Can age be converted to integer
                     total_age += age  # All of the ages added together
-                    age_count += 1  # Number of entries into the age column
+                    age_count += (
+                        1  # Number of entries into the age column
+                    )
                 except ValueError:
                     pass
 
@@ -94,7 +98,9 @@ class DataAnalyzer:
                 )
 
                 # Get the corresponding question title from column_mapping
-                question_title = list(self.column_mapping.keys())[column_index]
+                question_title = list(self.column_mapping.keys())[
+                    column_index
+                ]
 
                 # Print the question before creating the bar chart
                 header_text = colored(
@@ -108,7 +114,9 @@ class DataAnalyzer:
                 chart_data = []
                 for answer, count in answer_counts.items():
                     percentage = (count / total_responses) * 100
-                    chart_data.append((f"{answer} ({percentage:.2f}%)", count))
+                    chart_data.append(
+                        (f"{answer} ({percentage:.2f}%)", count)
+                    )
 
                     # Find the longest label length for alignment
                     longest_label_length = max(
@@ -141,7 +149,9 @@ class DataAnalyzer:
                     space = " " * space_blocks
 
                     formatted_label = f"{label:<{longest_label_length}}"
-                    print(f"{formatted_label} ▏ {count:#4d} {bar}{space}")
+                    print(
+                        f"{formatted_label} ▏ {count:#4d} {bar}{space}"
+                    )
                 print()
 
         except Exception as e:

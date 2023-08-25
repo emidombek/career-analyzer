@@ -34,7 +34,7 @@ column_mapping = {
     "What is your name?": "Name",
     "How old are you?": "Age",
     "Please select your career area:": "CareerType",
-    "On a scale of 1 to 5, how satisfied are you with your career?": "CareerSatisfaction",
+    "How satisfied are you with your career?": "CareerSatisfaction",
     "Are you considering a career change? (yes/no)": "ConsideringChange",
     "What factors influenced your decision?": "ChangeFactors",
     "Do you prefer remote work? (yes/no)": "RemoteWorkPreference",
@@ -88,14 +88,16 @@ class Survey:
             # Check for minimum length
             if len(answer.strip()) < 2:  # Minimum 2 characters
                 error_message = (
-                    "Please provide a valid name (at least 2 characters)."
+                    "Please provide a valid name (2+ characters)."
                 )
                 print(colored(error_message, "red"))
                 continue
 
             # Check for alphabetic characters only
             if not answer.isalpha():
-                error_message = "Please provide a valid name (letters only)."
+                error_message = (
+                    "Please provide a valid name (letters only)."
+                )
                 print(colored(error_message, "red"))
                 continue
 
@@ -146,21 +148,25 @@ class Survey:
                 answer = self.career_areas[selected_index]
                 self.answers.append(answer)
 
-            elif (
-                question
-                == "On a scale of 1 to 5, how satisfied are you with your career?"
-            ):
+            elif question == "How satisfied are you with your career?":
                 # Handle satisfaction rating using TerminalMenu
                 satisfaction_menu = TerminalMenu(
                     self.career_satisfaction_ratings, title=question
                 )
                 selected_index = satisfaction_menu.show()
-                answer = self.career_satisfaction_ratings[selected_index]
+                answer = self.career_satisfaction_ratings[
+                    selected_index
+                ]
                 self.answers.append(answer)
 
-            elif question == "Are you considering a career change? (yes/no)":
+            elif (
+                question
+                == "Are you considering a career change? (yes/no)"
+            ):
                 # Handle yes/no question using TerminalMenu
-                yes_no_menu = TerminalMenu(["yes", "no"], title=question)
+                yes_no_menu = TerminalMenu(
+                    ["yes", "no"], title=question
+                )
                 selected_index = yes_no_menu.show()
                 answer = ["yes", "no"][selected_index]
                 self.answers.append(answer)
@@ -171,13 +177,17 @@ class Survey:
                     self.career_change_factors, title=question
                 )
                 selected_index = factor_menu.show()
-                selected_factor = self.career_change_factors[selected_index]
+                selected_factor = self.career_change_factors[
+                    selected_index
+                ]
                 answer = self.career_change_factors[selected_index]
                 self.answers.append(answer)
 
             elif question == "Do you prefer remote work? (yes/no)":
                 # Handle yes/no question using TerminalMenu
-                yes_no_menu = TerminalMenu(["yes", "no"], title=question)
+                yes_no_menu = TerminalMenu(
+                    ["yes", "no"], title=question
+                )
                 selected_index = yes_no_menu.show()
                 answer = ["yes", "no"][selected_index]
                 self.answers.append(answer)
