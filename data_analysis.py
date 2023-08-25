@@ -1,11 +1,11 @@
 from survey import get_google_sheet_client, column_mapping
-import time
-from termcolor import colored
+import time  # For display statistics timeout
+from termcolor import colored  # Adds colored text and emoji support
 
 SHEET = get_google_sheet_client(
     creds_file="creds.json", sheet_name="career_analyzer"
 )
-
+# List that assigns colors for bar charts
 answer_color_mapping = {
     "Healthcare": "🟥",
     "Technology": "🟧",
@@ -28,11 +28,15 @@ answer_color_mapping = {
 }
 
 
+# Class that contains statistics logic creates bar charts
 class DataAnalyzer:
     def __init__(self, column_mapping):
         self.column_mapping = column_mapping
 
     def view_survey_statistics(self):
+        """
+        Calculate and display statistics based on survey data.
+        """
         try:
             worksheet = SHEET.get_worksheet(0)
             data = worksheet.get_all_records()
@@ -79,7 +83,7 @@ class DataAnalyzer:
                 print(avg_age_text)
                 # Print empty line
                 print()
-                time.sleep(1)
+                time.sleep(1)  # Delay for 1 second
 
             # Extract data from the Google Spreadsheet using column_mapping
             question_columns = list(self.column_mapping.values())[2:]
@@ -126,10 +130,9 @@ class DataAnalyzer:
                         len(label) for label, _ in chart_data
                     )
 
-                """
-                Idea for this taken from:
-                https://alexwlchan.net/2018/ascii-bar-charts/
-                """
+                # Idea for this taken from:
+                # https://alexwlchan.net/2018/ascii-bar-charts/
+
                 for label, count in chart_data:
                     # Calculate the percentage and prepare the label
                     percentage = (count / total_responses) * 100

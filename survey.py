@@ -7,13 +7,12 @@ from simple_term_menu import TerminalMenu
 from termcolor import colored
 
 
-"""function that defines permission scope,
-credentials location, sheet location"""
-
-
 def get_google_sheet_client(
     creds_file="creds.json", sheet_name="career_analyzer"
 ):
+    """function that defines permission scope,
+    credentials location, sheet location"""
+
     SCOPE = [
         "https://www.googleapis.com/auth/spreadsheets",
         "https://www.googleapis.com/auth/drive.file",
@@ -44,6 +43,7 @@ column_mapping = {
 # Survey class that contains survey logic
 class Survey:
     def __init__(self):
+        # List of answers
         self.career_areas = [
             "Technology",
             "Healthcare",
@@ -68,52 +68,58 @@ class Survey:
         ]
         self.answers = []
 
-    # Function that retrieves datetime and appends it to the list
     def add_timestamp(self):
+        """
+        Function that retrieves datetime and appends it to the list
+        Get current datetime
+        Format timestamp
+        Append the timestamp to the list
+        """
         try:
-            timestamp = datetime.datetime.now()  # get current datetime
-            timestamp_str = timestamp.strftime
-            ("%Y-%m-%d %H:%M:%S")  # format timestamp
-            # Append the timestamp to the list
+            timestamp = datetime.datetime.now()
+            timestamp_str = timestamp.strftime("%Y-%m-%d %H:%M:%S")
             self.answers.append(timestamp_str)
             print("Timestamp added to the survey answers.")
         except Exception as e:
             print("Error adding timestamp:", str(e))
 
-    # Function that handles name input validation
     def handle_name_input(self, question):
+        """
+        Function that handles name input validation
+        Check for minimum length 2
+        Check for alphabetic characters only
+        Capitalize the first letter
+        """
         while True:
             answer = input(colored(question + "\n", "green"))
 
-            # Check for minimum length
-            if len(answer.strip()) < 2:  # Minimum 2 characters
+            if len(answer.strip()) < 2:
                 error_message = (
                     "Please provide a valid name (2+ characters)."
                 )
                 print(colored(error_message, "red"))
                 continue
 
-            # Check for alphabetic characters only
-            if not answer.isalpha():
-                error_message = (
-                    "Please provide a valid name (letters only)."
-                )
+            if not all(c.isalpha() or c.isspace() for c in answer):
+                error_message = "Please provide a valid name (letters and spaces only)."
                 print(colored(error_message, "red"))
                 continue
 
-            # Capitalize the first letter
             formatted_name = answer.capitalize()
 
             self.answers.append(formatted_name)
             break
 
-    # Function that handles age validation
     def handle_age_input(self, question):
+        """
+        Function that handles age input validation
+        Checks if age in range
+        """
         while True:
             answer = input(colored(question + "\n", "green"))
             try:
                 age = int(answer)
-                if 18 <= age <= 122:  # A reasonable age range
+                if 18 <= age <= 122:  # age range
                     self.answers.append(str(age))
                     break
                 else:
@@ -123,16 +129,23 @@ class Survey:
                 error_message = "Please provide a valid age."
                 print(colored(error_message, "red"))
 
-    # Function that contains the survey questions and adds answers to the list
     def conduct_survey(self):
+        """
+        Function that contains survey logic
+        Reset answers
+        Display welcome
+        Add timestamp
+        Loop through column_mapping list
+        Handle choice questions using TerminalMenu
+        Append answers
+        Display Thank You
+        """
         self.answers = []
         welcome_message = "Welcome to the survey!"
         print(colored(welcome_message, "blue"))
         self.add_timestamp()
 
-        for i, question in enumerate(
-            column_mapping.keys()
-        ):  # looping through column_mapping list
+        for i, question in enumerate(column_mapping.keys()):
             if question == "What is your name?":
                 self.handle_name_input(question)
 
@@ -140,7 +153,6 @@ class Survey:
                 self.handle_age_input(question)
 
             elif question == "Please select your career area:":
-                # Handle career area selection using TerminalMenu
                 career_area_menu = TerminalMenu(
                     self.career_areas, title=question
                 )
@@ -149,7 +161,6 @@ class Survey:
                 self.answers.append(answer)
 
             elif question == "How satisfied are you with your career?":
-                # Handle satisfaction rating using TerminalMenu
                 satisfaction_menu = TerminalMenu(
                     self.career_satisfaction_ratings, title=question
                 )
@@ -163,7 +174,6 @@ class Survey:
                 question
                 == "Are you considering a career change? (yes/no)"
             ):
-                # Handle yes/no question using TerminalMenu
                 yes_no_menu = TerminalMenu(
                     ["yes", "no"], title=question
                 )
@@ -172,7 +182,6 @@ class Survey:
                 self.answers.append(answer)
 
             elif question == "What factors influenced your decision?":
-                # Handle single choice question using TerminalMenu
                 factor_menu = TerminalMenu(
                     self.career_change_factors, title=question
                 )
@@ -184,7 +193,6 @@ class Survey:
                 self.answers.append(answer)
 
             elif question == "Do you prefer remote work? (yes/no)":
-                # Handle yes/no question using TerminalMenu
                 yes_no_menu = TerminalMenu(
                     ["yes", "no"], title=question
                 )
@@ -195,8 +203,14 @@ class Survey:
         thank_you_message = "Thank you for completing the survey!"
         print(colored(thank_you_message, "blue"))
 
-    # Store results in googlesheet
     def store_results_in_google_sheet(self):
+        """
+        Function thats stores answers in google sheet
+        Using get_google_sheet_client
+        Gets google worksheet
+        Maps values to answers
+        Appends survey data stored in values
+        """
         try:
             SHEET = get_google_sheet_client()
             worksheet = SHEET.get_worksheet(0)
@@ -206,14 +220,19 @@ class Survey:
         except Exception as e:
             print("Error storing survey results:", str(e))
 
-    # Display the results at the end of the survey
     def display_results(self):
+        """
+        Function that displays results
+        Pairs questions and answers
+        Assigns different colors
+        Displays results
+        """
         survey_results_message = colored("Survey Results:", "blue")
         print(survey_results_message)
 
         for question, answer in zip(
             column_mapping.keys(), self.answers[1:]
-        ):  # pair answers to questions
+        ):
             question_colored = colored(question, "green")
             answer_colored = colored(answer, "yellow")
             print(f"{question_colored}\n- Answer: {answer_colored}\n")
