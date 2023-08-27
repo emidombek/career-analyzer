@@ -276,13 +276,10 @@ Follow these steps to deploy the Career Analyzer application on your local machi
      To store and manage survey data, the Career Analyzer application utilizes Google Sheets as a simple and accessible database. Follow these steps to set up the Google Sheets integration:
 
      - Google Sheets Credentials:
-        Obtain the necessary credentials to access your Google Sheets. This typically involves creating a service account and obtaining a JSON key file.
-
-     - Configure Environment Variables:
-        In the project directory, create a .env file to store your Google Sheets credentials and other configuration data. Ensure you include the required variables to authenticate with the Google Sheets API.
+        Obtain the necessary credentials to access your Google Sheets. This typically involves creating a service account and obtaining a JSON key file. Make sure to add the JSON key file into the root directory. You can find further instructions on how to do this [here](https://support.google.com/a/answer/7378726?hl=en). 
 
      - Access and Permissions:
-        Share the Google Sheets document with the email address associated with your service account. This step ensures the application has the necessary permissions to read and write data.
+        Share the Google Sheets document with the email address associated with your service account. This step ensures the application has the necessary permissions to read and write data. You can find more instructions on how to do this [here](https://medium.com/google-cloud/google-sheets-cloud-run-ffc1875d2a1).
 
         With these steps completed, the Career Analyzer application will be able to interact with Google Sheets as a database for storing and retrieving survey data. Don't forget to update the `get_google_sheet_client` function with your credentials and settings in the `survey.py` file.
 
