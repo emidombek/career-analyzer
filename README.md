@@ -119,6 +119,7 @@ The majority of this program is written in Python 3.11.4 the code is organized i
       **Code Summary:**
 
       - `clear_console()`: Defines a function to clear the terminal/console screen, enhancing the user interface.
+      - `handle_go_back(self)`: Handles user input to navigate back to the main menu, returning True if the user chooses to go back, and False otherwise.
       - `TerminalMenuApp` class: Defines the main application class.
         - `__init__()`: Initializes the class with menu item options and creates an instance of `TerminalMenu`.
         - `take_survey()`: Initiates the survey process by creating an instance of the `Survey` class from `survey.py`.
@@ -366,5 +367,79 @@ To install these dependencies, you can use the following command:
 
    </details>
 
+ ### 🧪 Manual Testing
 
+ ### User Story: Professional Completing the Survey and Analyzing Job Satisfaction
 
+| **Test Case**             | **Actions**                                             | **Expected Results**                                                  | **Pass** |
+| ------------------------- | ------------------------------------------------------- | --------------------------------------------------------------------- | -------- |
+| Survey Completion         | 1. Launch Career Analyzer.                              | Main menu is displayed.                                               | Y        |
+|                           | 2. Choose "Take Survey" from the main menu.             | Survey questions are presented.                                       | Y        |
+|                           | 3. Answer survey questions.                             | Answers are selected and saved for each question.                     | Y        |
+|                           | 4. Complete the survey.                                 | Survey completion message is displayed.                               | Y        |
+|                           | 5. Choose "Back to Main Menu" from the survey menu.     | Main menu is displayed.                                               | Y        |
+| Job Satisfaction Analysis | 1. Choose "View Statistics" from the main menu.         | Job satisfaction statistics are retrieved, calculated, and displayed. | Y        |
+|                           | 2. Choose "Back to Main Menu" from the statistics menu. | Main menu is displayed.                                               | Y        |
+| About Section View        | 1. Choose "About" from the main menu.                   | About section information is displayed.                               | Y        |
+|                           | 2. Choose "Back to Main Menu" from the about menu.      | Main menu is displayed.                                               | Y        |
+| Exit                      | 1. Choose "Exit" from the main menu.                    | Career Analyzer application exits.                                    | Y        |
+
+ ### User Story: Individual Considering Career Change
+
+| **Test Case**                  | **Actions**                                             | **Expected Results**                                                 | **Pass** |
+| ------------------------------ | ------------------------------------------------------- | -------------------------------------------------------------------- | -------- |
+| Career Change Evaluation       | 1. Launch Career Analyzer.                              | Main menu is displayed.                                              | Y        |
+|                                | 2. Choose "Take Survey" from the main menu.             | Survey questions are presented.                                      | Y        |
+|                                | 3. Answer survey questions.                             | Answers are saved for each question.                                 | Y        |
+|                                | 4. Complete the survey.                                 | Survey completion message is displayed. Survey results are displayed | Y        |
+|                                | 5. Choose "Back to Main Menu" from the survey menu.     | Main menu is displayed.                                              | Y        |
+| Career Change Factors Analysis | 1. Choose "View Statistics" from the main menu.         | Career change factors statistics are displayed.                      | Y        |
+|                                | 2. Choose "Back to Main Menu" from the statistics menu. | Main menu is displayed.                                              | Y        |
+| About Section View             | 1. Choose "About" from the main menu.                   | About section information is displayed.                              | Y        |
+|                                | 2. Choose "Back to Main Menu" from the about menu.      | Main menu is displayed.                                              | Y        |
+| Exit                           | 1. Choose "Exit" from the main menu.                    | Career Analyzer application exits.                                   | Y        |
+
+ ### User Story: Understanding Remote Work Preference
+
+| **Test Case**                   | **Actions**                                             | **Expected Results**                                                  | **Pass** |
+| ------------------------------- | ------------------------------------------------------- | --------------------------------------------------------------------- | -------- |
+| Survey Completion               | 1. Launch Career Analyzer.                              | Main menu is displayed.                                               | Y        |
+|                                 | 2. Choose "Take Survey" from the main menu.             | Survey questions are presented.                                       | Y        |
+|                                 | 3. Answer survey questions.                             | Answers are saved for each question.                                  | Y        |
+|                                 | 4. Complete the survey.                                 | Survey completion message is displayed. Survey results are displayed. | Y        |
+|                                 | 5. Choose "Back to Main Menu" from the survey menu.     | Main menu is displayed.                                               | Y        |
+| Remote Work Preference Analysis | 1. Choose "View Statistics" from the main menu.         | Remote work preference statistics are displayed.                      | Y        |
+|                                 | 2. Choose "Back to Main Menu" from the statistics menu. | Main menu is displayed.                                               | Y        |
+| About Section View              | 1. Choose "About" from the main menu.                   | About section information is displayed.                               | Y        |
+|                                 | 2. Choose "Back to Main Menu" from the about menu.      | Main menu is displayed.                                               | Y        |
+| Exit                            | 1. Choose "Exit" from the main menu.                    | Career Analyzer application exits.                                    | Y        |
+
+### User Story: Researching Career Trends
+
+| **Test Case**          | **Actions**                                             | **Expected Results**                                                       | **Pass** |
+| ---------------------- | ------------------------------------------------------- | -------------------------------------------------------------------------- | -------- |
+| Survey Completion      | 1. Launch Career Analyzer.                              | Main menu is displayed.                                                    | Y        |
+|                        | 2. Choose "Take Survey" from the main menu.             | Survey questions are presented.                                            | Y        |
+|                        | 3. Answer survey questions.                             | Answers are saved for each question.                                       | Y        |
+|                        | 4. Complete the survey.                                 | Survey completion message is displayed. Results from survey are displayed. | Y        |
+|                        | 5. Choose "Back to Main Menu" from the survey menu.     | Main menu is displayed.                                                    | Y        |
+| Career Trends Analysis | 1. Choose "View Statistics" from the main menu.         | Career trends statistics are displayed.                                    | Y        |
+|                        | 2. Choose "Back to Main Menu" from the statistics menu. | Main menu is displayed.                                                    | Y        |
+| About Section View     | 1. Choose "About" from the main menu.                   | About section information is displayed.                                    | Y        |
+|                        | 2. Choose "Back to Main Menu" from the about menu.      | Main menu is displayed.                                                    | Y        |
+| Exit                   | 1. Choose "Exit" from the main menu.                    | Career Analyzer application exits.                                         | Y        |
+
+### User Story: Career Counselor Recommending Career Analyzer
+
+| **Test Case**                  | **Actions**                                                  | **Expected Results**                                                  | **Pass** |
+| ------------------------------ | ------------------------------------------------------------ | --------------------------------------------------------------------- | -------- |
+| Survey Completion              | 1. Launch Career Analyzer.                                   | Main menu is displayed.                                               | Y        |
+|                                | 2. Choose "Take Survey" from the main menu.                  | Survey questions are presented.                                       | Y        |
+|                                | 3. Answer survey questions.                                  | Answers are saved for each question.                                  | Y        |
+|                                | 4. Complete the survey.                                      | Survey completion message is displayed. Survey results are displayed. | Y        |
+|                                | 5. Choose "Back to Main Menu" from the survey menu.          | Main menu is displayed.                                               | Y        |
+| Career Analysis Recommendation | 1. Choose "Recommendations" from the main menu.              | Recommendations for career discussions are displayed.                 | Y        |
+|                                | 2. Choose "Back to Main Menu" from the recommendations menu. | Main menu is displayed.                                               | Y        |
+| About Section View             | 1. Choose "About" from the main menu.                        | About section information is displayed.                               | Y        |
+|                                | 2. Choose "Back to Main Menu" from the about menu.           | Main menu is displayed.                                               | Y        |
+| Exit                           | 1. Choose "Exit" from the main menu.                         | Career Analyzer application exits.                                    | Y        |
