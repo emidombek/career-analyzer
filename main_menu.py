@@ -1,15 +1,21 @@
 from survey import Survey
 from data_analysis import DataAnalyzer, column_mapping
+import os
+import subprocess
+from termcolor import colored  # Adds colored text and emoji support
 from simple_term_menu import (
     TerminalMenu,
 )  # Import the TerminalMenu class
-import os
-from termcolor import colored  # Adds colored text and emoji support
 
 
-# Function to clear the console
 def clear_console():
-    os.system("cls" if os.name == "nt" else "clear")
+    """
+    Function that clears the console
+    Using subprocess module:
+    https://www.geeksforgeeks.org/clear-screen-python/
+    """
+
+    subprocess.run(["clear" if os.name != "nt" else "cls"], shell=True)
 
 
 # Class that contains menu logic/about text

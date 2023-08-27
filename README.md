@@ -92,6 +92,9 @@ Consists of four main Python files:
    - [GSpread](https://docs.gspread.org/en/v5.10.0/) - A library for working with Google Sheets and Google Drive, used for storing and retrieving survey data.
    - [simple-term-menu](https://pypi.org/project/simple-term-menu/) - Used for creating interactive terminal menus to facilitate user navigation within the application.
    - [termcolor](https://pypi.org/project/termcolor/) - Enables terminal text coloring for enhancing the user interface and readability.
+   - [datetime module](https://docs.python.org/3/library/datetime.html) - Provides classes for working with dates and times.
+   - [time module](https://docs.python.org/3/library/time.html) - Offers functions for time-related operations like measuring performance and adding delays. 
+   - [subprocess module](https://docs.python.org/3/library/subprocess.html) - Allows spawning processes, running shell commands, and managing I/O. 
   
   These are the core Technologies used in this application. Please see the [Dependencies](#📦-dependencies) section for a full list of items found in the `requirements.txt` file. Due to my environment setup several items that are not needed to run Application are included in the `requirements.txt`. You can install the entire `requirements.txt` or only the core technologies listed above.
 
@@ -498,6 +501,7 @@ To install these dependencies, you can use the following command:
  - [Zip() in Python](https://www.geeksforgeeks.org/zip-in-python/) used in `display_results()` in the `survey.py` file.
  - [Enumerate() in Python](https://www.geeksforgeeks.org/enumerate-in-python/) used throughout the project.
  - Example of how to use gspread [GSpread](https://docs.gspread.org/en/v5.10.0/) taken from the [Love Sandwiches Project](https://github.com/Code-Institute-Solutions/love-sandwiches-p5-sourcecode/tree/master/01-getting-set-up/01-getting-our-gitpod-workspace-set-up) which was turned into the `get_google_sheet_client()` in the `survey.py` file.
+ - Clear the console using subprocess module used in `clear_console()` [Clear Screen Python](https://www.geeksforgeeks.org/clear-screen-python/).
 
 ## 🏆 Acknowledgments
 
