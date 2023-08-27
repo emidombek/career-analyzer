@@ -1,7 +1,7 @@
 # Career Analyzer Readme 📚
 ![Devices Preview](#)
 
-[Link to Live Site Here](#)
+[Link to Live Site Here](https://career-analyzer-b7d4af5a6779.herokuapp.com/)
 
 ## 🤔 What is Career Analyzer?
 
@@ -69,7 +69,7 @@ Consists of four main Python files:
    - [simple-term-menu](https://pypi.org/project/simple-term-menu/) - Used for creating interactive terminal menus to facilitate user navigation within the application.
    - [termcolor](https://pypi.org/project/termcolor/) - Enables terminal text coloring for enhancing the user interface and readability.
   
-  These are the core Technologies used in this application. Please see the [Dependencies](#📦-dependencies) section for a full list of items found in the `requirements.txt` file. Due to my OS several items that are not needed to run Application are included in the `requirements.txt`. You can install the entire `requirements.txt` or only the core technologies listed above.
+  These are the core Technologies used in this application. Please see the [Dependencies](#📦-dependencies) section for a full list of items found in the `requirements.txt` file. Due to my environment setup several items that are not needed to run Application are included in the `requirements.txt`. You can install the entire `requirements.txt` or only the core technologies listed above.
 
 ## 🤖 Code
 
