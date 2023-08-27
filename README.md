@@ -48,6 +48,30 @@ Consists of four main Python files:
  **About:**
   - Provides an overview of the application's purpose and functionality.
   - Introduces the creator and acknowledges contributions.
+
+  <details>
+   <summary>Click here to view a screenshots of the application</summary>
+   
+   <br>
+   *Main Menu*
+   ![Main Menu](#)
+
+   <br>
+
+   *Take the Survey*
+   ![Survey](#)
+
+   <br>
+
+   *View Survey Result Statistics*
+   ![View Survey Result Statistics](#)
+
+   <br>
+
+   *About*
+   ![About] (#)
+  
+   </details>
   
 ## 🖥 Technology
 

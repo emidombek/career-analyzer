@@ -1,4 +1,5 @@
 import datetime  # Imports built in datetime module
+import time  # For delay on display answers timeout
 import gspread  # Imports Google sheets API
 from google.oauth2.service_account import (
     Credentials,
@@ -243,3 +244,5 @@ class Survey:
             answer_colored = colored(answer, "yellow")
             print(f"{question_colored}\n- Answer: {answer_colored}\n")
             print("-" * 40)
+            # Add a delay between question-answer pairs
+            time.sleep(1)
