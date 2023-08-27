@@ -481,7 +481,7 @@ To install these dependencies, you can use the following command:
 
  ### 🦠 Unresolved Bugs:
   
- 1. Not all bar colors displayed correctly on some barchart statistics. Some bars display as blue (default color) as opposed to the colors assigned to the answers in the `answer_color_mapping` list. 
+ 1. Not all bar colors displayed correctly on some barchart statistics. Some bars display as blue (default color) as opposed to the colors assigned to the answers in the `answer_color_mapping` dictionary. 
 
     <details>
 
@@ -495,7 +495,7 @@ To install these dependencies, you can use the following command:
 
      *Color Mapping Columns*
 
-     ![answer_color_mapping list](assets/docs/images/colormapping_screen.png)
+     ![answer_color_mapping dictionary](assets/docs/images/colormapping_screen.png)
   
      </details>
 
@@ -520,6 +520,7 @@ To install these dependencies, you can use the following command:
  - Python Loops resource [Loops in Python](https://www.geeksforgeeks.org/loops-in-python/) used throughout the project.
  - Python Lists resource [Lists in Python](https://www.geeksforgeeks.org/python-lists/?ref=lbp) used throughout the project.
  - Convert timestamp to string resource [Python strftime()](https://www.programiz.com/python-programming/datetime/strftime) used in the `add_timestamp()` function located in the `survey.py` file.
+ - Python dictionary resource [Dictionaries in Python](https://www.w3schools.com/python/python_dictionaries.asp).
  - [Built-in Python datetime module](https://docs.python.org/3/library/datetime.html).
  - [Time objects in Python and use cases](https://docs.python.org/3/library/datetime.html#time-objects).
  - [Zip() in Python](https://www.geeksforgeeks.org/zip-in-python/) used in `display_results()` in the `survey.py` file.
