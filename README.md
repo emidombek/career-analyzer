@@ -3,11 +3,11 @@
 
 [Link to Live Site Here](https://career-analyzer-b7d4af5a6779.herokuapp.com/)
 
-## 🤔 What is Career Analyzer?
+## 🤔 What is the Career Analyzer?
 
  Welcome to Career Analyzer, a Python-based terminal application designed to help you gauge career satisfaction and assess the likelihood of a career or job change. Whether you're curious about your current job's alignment with your aspirations or considering a shift in your professional journey, Career Analyzer is here to assist.
 
-## ⭐ Purpose and goals of the Application
+## ⭐ Purpose and Goals of the Application
 
  - Insightful Self-Assessment: The application's primary goal is to offer users a platform for self-assessment. Through a structured survey, users can evaluate their job satisfaction, identify factors driving potential changes, and express preferences for remote work. This enables users to gain a deeper understanding of their career perspectives.
  - Data-Driven Exploration: Career Analyzer aims to transform survey responses into meaningful insights. By analyzing survey data, the application generates statistical summaries that highlight trends, patterns, and participant demographics. This data-driven approach assists users in making informed decisions and encourages discussions about career satisfaction within the community.
@@ -23,13 +23,13 @@
 ## 🗃 Content and Structure
 
 Consists of four main Python files:
- - **run.py**: Entry point, displays welcome message and initializes menu.
+ - **run.py**: Entry point, displays the welcome message and initializes the menu.
  - **main_menu.py**: Defines the main menu structure and functionality.
  - **survey.py**: Conducts the survey and stores responses in Google Sheets.
  - **data_analysis.py**: Analyzes survey data and generates statistical summaries.
 
 <details>
- <summary>Click here to view a simplified flowchart with an Overview of the Application Content & Structure</summary>
+ <summary>Click here to view a simplified flowchart with an Overview of the Application Content and Structure</summary>
    
    ![UX Program Flowchart](assets/docs/images/ue_flowchart_career_analyzer.jpg)
   
@@ -38,8 +38,8 @@ Consists of four main Python files:
  ### ✨ Features
 
  **Take the Survey:**
-  - Interactive survey covering career satisfaction, change factors, and remote work preference.
-  - Responses stored and used for analysis.
+  - An interactive survey covering career satisfaction, change factors, and remote work preference.
+  - Responses are stored and used for analysis.
   
  **View Survey Result Statistics:**
   - Statistical analysis of survey data, including count, demographics, and response percentages.
@@ -80,7 +80,7 @@ Consists of four main Python files:
 
  The technology used in this project is as follows:
 
-   - [Python](https://en.wikipedia.org/wiki/Python_(programming_language)) Python is a versatile and high-level programming      language known for its simplicity and readability, suitable for a wide range of applications.
+   - [Python](https://en.wikipedia.org/wiki/Python_(programming_language)) Python is a versatile and high-level programming    language known for its simplicity and readability, suitable for a wide range of applications.
    - [Code Institute Python Essentials Template](https://github.com/Code-Institute-Org/p3-template) - GitHub repository template used to create the repository.
    - [Visual Studio Code](https://code.visualstudio.com/) - source code editor used to create, edit and publish the webpages with the assistance of Git/GitHub/GitPages.
    - [Google Sheets](https://www.google.com/sheets/about/) - Google Sheets is a cloud-based spreadsheet application by Google, offering collaborative data management, analysis, and visualization.
@@ -99,7 +99,7 @@ Consists of four main Python files:
    - [time module](https://docs.python.org/3/library/time.html) - Offers functions for time-related operations like measuring performance and adding delays. 
    - [subprocess module](https://docs.python.org/3/library/subprocess.html) - Allows spawning processes, running shell commands, and managing I/O. 
   
-  These are the core Technologies used in this application. Please see the [Dependencies](#📦-dependencies) section for a full list of items found in the `requirements.txt` file. Due to my environment setup several items that are not needed to run Application are included in the `requirements.txt`. You can install the entire `requirements.txt` or only the core technologies listed above.
+  These are the core Technologies used in this application. Please see the [Dependencies](#📦-dependencies) section for a full list of items found in the `requirements.txt` file. Due to my environment, several items that are not needed to run the application are included in the `requirements.txt`. You can install the entire `requirements.txt` or only the core technologies listed above.
 
 ## 🤖 Code
 
@@ -481,7 +481,7 @@ To install these dependencies, you can use the following command:
 
  ### 🦠 Unresolved Bugs:
   
- 1. Not all bar colors displayed correctly on some barchart statistics. Some bars display as blue (default color) as opposed to the colors assigned to the answers in the `answer_color_mapping` dictionary. 
+ 1. Not all bar colors are displayed correctly on some bar chart statistics. Some bars display as blue (default color) as opposed to the colors assigned to the answers in the `answer_color_mapping` dictionary. 
 
     <details>
 
@@ -499,11 +499,13 @@ To install these dependencies, you can use the following command:
   
      </details>
 
- 2. Console/Terminal does not clear completely when previous section scrolls. This issue could be OS/machine specific and persists despite trying several different methods with the `clear_console()` function.
+ 2. The terminal does not clear completely when if previous section scrolls. This issue could be OS/machine specific and persists despite trying several different methods with the `clear_console()` function.
 
     <details>
 
     <summary>Click here to view a screenshots of the bug</summary>
+
+    <br>
 
      *Uncleared part of screen*
     
@@ -513,7 +515,7 @@ To install these dependencies, you can use the following command:
 
 ## 👩‍💻 Resources
 
- - The concept for displaying the bar charts in `view_survey_statistics(self)` within the `data_analysis.py` file was based on the code shown here [here](https://alexwlchan.net/2018/ascii-bar-charts/). Edited code for to allow for emojis.
+ - The concept for displaying the bar charts in `view_survey_statistics(self)` within the `data_analysis.py` file was based on the code shown [here](https://alexwlchan.net/2018/ascii-bar-charts/). Edited code for to allow for emojis.
  - User facing terminal interface was included in the [Code Institute Python Essentials Template](https://github.com/Code-Institute-Org/p3-template). 
  - Python library with colored text and icon display support: [termcolor](https://pypi.org/project/termcolor/).
  - Python library containing interactive terminal menu: [simple-term-menu](https://pypi.org/project/simple-term-menu/).
@@ -531,6 +533,6 @@ To install these dependencies, you can use the following command:
 ## 🏆 Acknowledgments
 
  - I would like to acknowledge my daughter and husband for their support and understanding during this time of intense learning.
- - My mentor Juliia for her guidance and suggestions as always she has gone above and beyond and I am very grateful for her support and knowledge. 
+ - My mentor Juliia for her guidance and suggestions, she has gone above and beyond and I am very grateful for her support and knowledge. 
 
 
