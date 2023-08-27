@@ -53,7 +53,7 @@ class Survey:
             "Healthcare",
             "Finance",
             "Education",
-            "Other",
+            "Other (Question 3)",
         ]
         self.career_satisfaction_ratings = [
             "Unhappy",
@@ -68,7 +68,7 @@ class Survey:
             "Opportunities for growth",
             "Company culture",
             "Location",
-            "Other",
+            "Other (Question 6)",
         ]
         self.answers = []
 
