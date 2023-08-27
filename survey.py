@@ -13,6 +13,8 @@ def get_google_sheet_client(
     """
     Function that defines permission scope,
     credentials location, sheet location
+    Example taken from the Love Sandwiches project,
+    see readme resources
     """
 
     SCOPE = [
