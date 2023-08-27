@@ -369,7 +369,7 @@ To install these dependencies, you can use the following command:
 
  ### 🧪 Manual Testing
 
- ### User Story: Professional Completing the Survey and Analyzing Job Satisfaction
+ ### 🧑 User Story: Professional Completing the Survey and Analyzing Job Satisfaction
 
 | **Test Case**             | **Actions**                                             | **Expected Results**                                                  | **Pass** |
 | ------------------------- | ------------------------------------------------------- | --------------------------------------------------------------------- | -------- |
@@ -384,7 +384,7 @@ To install these dependencies, you can use the following command:
 |                           | 2. Choose "Back to Main Menu" from the about menu.      | Main menu is displayed.                                               | Y        |
 | Exit                      | 1. Choose "Exit" from the main menu.                    | Career Analyzer application exits.                                    | Y        |
 
- ### User Story: Individual Considering Career Change
+ ### 🧔 User Story: Individual Considering Career Change
 
 | **Test Case**                  | **Actions**                                             | **Expected Results**                                                 | **Pass** |
 | ------------------------------ | ------------------------------------------------------- | -------------------------------------------------------------------- | -------- |
@@ -399,7 +399,7 @@ To install these dependencies, you can use the following command:
 |                                | 2. Choose "Back to Main Menu" from the about menu.      | Main menu is displayed.                                              | Y        |
 | Exit                           | 1. Choose "Exit" from the main menu.                    | Career Analyzer application exits.                                   | Y        |
 
- ### User Story: Understanding Remote Work Preference
+ ### 🧑‍🦰 User Story: Understanding Remote Work Preference
 
 | **Test Case**                   | **Actions**                                             | **Expected Results**                                                  | **Pass** |
 | ------------------------------- | ------------------------------------------------------- | --------------------------------------------------------------------- | -------- |
@@ -414,7 +414,7 @@ To install these dependencies, you can use the following command:
 |                                 | 2. Choose "Back to Main Menu" from the about menu.      | Main menu is displayed.                                               | Y        |
 | Exit                            | 1. Choose "Exit" from the main menu.                    | Career Analyzer application exits.                                    | Y        |
 
-### User Story: Researching Career Trends
+ ### 🧑‍🦱 User Story: Researching Career Trends
 
 | **Test Case**          | **Actions**                                             | **Expected Results**                                                       | **Pass** |
 | ---------------------- | ------------------------------------------------------- | -------------------------------------------------------------------------- | -------- |
@@ -429,7 +429,7 @@ To install these dependencies, you can use the following command:
 |                        | 2. Choose "Back to Main Menu" from the about menu.      | Main menu is displayed.                                                    | Y        |
 | Exit                   | 1. Choose "Exit" from the main menu.                    | Career Analyzer application exits.                                         | Y        |
 
-### User Story: Career Counselor Recommending Career Analyzer
+ ### 🧓 User Story: Career Counselor Recommending Career Analyzer
 
 | **Test Case**                  | **Actions**                                                  | **Expected Results**                                                  | **Pass** |
 | ------------------------------ | ------------------------------------------------------------ | --------------------------------------------------------------------- | -------- |
@@ -443,3 +443,41 @@ To install these dependencies, you can use the following command:
 | About Section View             | 1. Choose "About" from the main menu.                        | About section information is displayed.                               | Y        |
 |                                | 2. Choose "Back to Main Menu" from the about menu.           | Main menu is displayed.                                               | Y        |
 | Exit                           | 1. Choose "Exit" from the main menu.                         | Career Analyzer application exits.                                    | Y        |
+
+## 🐛 Known Issues and Bugs
+
+ Currently there is one known unresolved bug in the application:
+  
+ 1. No all bar colors displayed correctly on some bar chart statistics. Some bars display as blue (default color) as oppposed to the colors assigned to the answers in the `answer_color_mapping` list. 
+
+  <details>
+
+   <summary>Click here to view a screenshots of the bug</summary>
+   
+   ![Bar charts display](#)
+
+   ![answer_color_mapping list](#)
+  
+   </details>
+
+## 👩‍💻 Resources
+
+ - The concept for displaying the bar charts in `view_survey_statistics(self)` within the `data_analysis.py` file was based on the code shown here [here](https://alexwlchan.net/2018/ascii-bar-charts/). Edited code for to allow for emojis.
+ - User facing terminal interface was included in the [Code Institute Python Essentials Template](https://github.com/Code-Institute-Org/p3-template). 
+ - Python library with colored text and icon display support: [termcolor](https://pypi.org/project/termcolor/).
+ - Python library containing interactive terminal menu: [simple-term-menu](https://pypi.org/project/simple-term-menu/).
+ - Python Loops resource [Loops in Python](https://www.geeksforgeeks.org/loops-in-python/) used throughout the project.
+ - Python Lists resource [Lists in Python](https://www.geeksforgeeks.org/python-lists/?ref=lbp) used throughout the project.
+ - Convert timestamp to string resource [Python strftime()](https://www.programiz.com/python-programming/datetime/strftime) used in the `add_timestamp()` function located in the `survey.py` file.
+ - [Built-in Python datetime module](https://docs.python.org/3/library/datetime.html).
+ - [Time objects in Python and use cases](https://docs.python.org/3/library/datetime.html#time-objects).
+ - [Zip() in Python](https://www.geeksforgeeks.org/zip-in-python/) used in `display_results()` in the `survey.py` file.
+ - [Enumerate() in Python](https://www.geeksforgeeks.org/enumerate-in-python/) used throughout the project.
+ - Example of how to use gspread [GSpread](https://docs.gspread.org/en/v5.10.0/) taken from the [Love Sandwiches Project](https://github.com/Code-Institute-Solutions/love-sandwiches-p5-sourcecode/tree/master/01-getting-set-up/01-getting-our-gitpod-workspace-set-up) which was turned into the `get_google_sheet_client()` in the `survey.py` file.
+
+## 🏆 Acknowledgments
+
+ - I would like to acknowledge my daughter and husband for their support and understanding during this time of intense learning.
+ - My mentor Juliia for her guidance and suggestions as always she has gone above and beyond and I am very grateful for her support and knowledge. 
+
+
