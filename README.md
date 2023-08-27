@@ -28,14 +28,14 @@ Consists of four main Python files:
  - **survey.py**: Conducts the survey and stores responses in Google Sheets.
  - **data_analysis.py**: Analyzes survey data and generates statistical summaries.
 
-  <details>
-   <summary>Click here to view a simplified flowchart with an Overview of the Application Content & Structure</summary>
+<details>
+ <summary>Click here to view a simplified flowchart with an Overview of the Application Content & Structure</summary>
    
    ![UX Program Flowchart](assets/docs/images/ue_flowchart_career_analyzer.jpg)
   
-   </details>
+ </details>
 
- ### 👾 Features
+ ### ✨ Features
 
  **Take the Survey:**
   - Interactive survey covering career satisfaction, change factors, and remote work preference.
@@ -49,27 +49,30 @@ Consists of four main Python files:
   - Provides an overview of the application's purpose and functionality.
   - Introduces the creator and acknowledges contributions.
 
-  <details>
-   <summary>Click here to view a screenshots of the application</summary>
-   
-   <br>
-   *Main Menu*
-   ![Main Menu](#)
+<details>
+   <summary>Click here to view screenshots of the application features</summary>
 
    <br>
+   
+   *Main Menu*
+   
+   ![Main Menu](assets/docs/images/ca_main_menu_console_screen.png)
+
 
    *Take the Survey*
-   ![Survey](#)
 
-   <br>
+   ![Survey](assets/docs/images/ca_surveyconsole_screen.png)
+
 
    *View Survey Result Statistics*
-   ![View Survey Result Statistics](#)
 
-   <br>
+   ![View Survey Result Statistics](assets/docs/images/ca_surveyconsole_screen.png)
 
    *About*
-   ![About] (#)
+
+   ![About](assets/docs/images/ca_about_screen.png)
+
+   <br>
   
    </details>
   
@@ -105,7 +108,7 @@ The majority of this program is written in Python 3.11.4 the code is organized i
  <details>
    <summary>Click here to view a technical flowchart with an Overview of the Program Content & Structure</summary>
    
-   ![Technical Program Flowchart](#)
+   ![Technical Program Flowchart](assets/docs/images/technical_flowchart_careeranalyzer.jpg)
   
    </details>
 
@@ -377,18 +380,21 @@ To install these dependencies, you can use the following command:
 
    <br>
   
-   - run.py results:
-   ![Screenshot of the run.py results](#)
-
-   - main_menu.py results:
-   ![Screenshot of the main_menu.py results](#)
-
-   - survey.py results:
-   ![Screenshot of the survey.py results](#)
-
-   - data_analysis.py results:
+   - *run.py* 
   
-   ![Screenshot of the data_analysis.py results](#)
+   ![Screenshot of the run.py results](assets/docs/images/run_linter_screen.png)
+
+   - *main_menu.py* 
+  
+   ![Screenshot of the main_menu.py results](assets/docs/images/main_menu_linter_screen.png)
+
+   - *survey.py* 
+
+   ![Screenshot of the survey.py results](assets/docs/images/survey_linter_screen.png)
+
+   - *data_analysis.py*
+  
+   ![Screenshot of the data_analysis.py results](assets/docs/images/data_analysis_linter_screen.png)
 
    <br>
 
@@ -475,25 +481,33 @@ To install these dependencies, you can use the following command:
 
  ### 🦠 Unresolved Bugs:
   
- 1. Not all bar colors displayed correctly on some barchart statistics. Some bars display as blue (default color) as oppposed to the colors assigned to the answers in the `answer_color_mapping` list. 
+ 1. Not all bar colors displayed correctly on some barchart statistics. Some bars display as blue (default color) as opposed to the colors assigned to the answers in the `answer_color_mapping` list. 
 
     <details>
 
       <summary>Click here to view a screenshots of the bug</summary>
-   
-     ![Bar charts display](#)
 
-     ![answer_color_mapping list](#)
+      <br>
+
+      *Bar Charts displaying incorrect colors*
+   
+     ![Bar charts display](assets/docs/images/barcharts_screen.png)
+
+     *Color Mapping Columns*
+
+     ![answer_color_mapping list](assets/docs/images/colormapping_screen.png)
   
      </details>
 
- 2. Console/Terminal does not clear completely when previous section scrolls. This issue could be OS/machine specific and persists on my machine despite trying several different methods with the `clear_console()` function.
+ 2. Console/Terminal does not clear completely when previous section scrolls. This issue could be OS/machine specific and persists despite trying several different methods with the `clear_console()` function.
 
     <details>
 
-     <summary>Click here to view a screenshots of the bug</summary>
+    <summary>Click here to view a screenshots of the bug</summary>
+
+     *Uncleared part of screen*
     
-     ![Uncleared screenshot](#)
+     ![Uncleared screenshot](assets/docs/images/bug2_screen.png)
   
      </details>
 
