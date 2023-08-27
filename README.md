@@ -1,5 +1,5 @@
 # Career Analyzer Readme 📚
-![Devices Preview](#)
+![Devices Preview](assets/docs/images/devices_view.png)
 
 [Link to Live Site Here](https://career-analyzer-b7d4af5a6779.herokuapp.com/)
 
@@ -31,7 +31,7 @@ Consists of four main Python files:
   <details>
    <summary>Click here to view a simplified flowchart with an Overview of the Application Content & Structure</summary>
    
-   ![Simplified Program Flowchart](#)
+   ![UX Program Flowchart](assets/docs/images/ue_flowchart_career_analyzer.jpg)
   
    </details>
 
@@ -473,29 +473,29 @@ To install these dependencies, you can use the following command:
 
 ## 🐛 Known Issues and Bugs
 
- Unresolved Bugs:
+ ### 🦠 Unresolved Bugs:
   
- 1. No all bar colors displayed correctly on some bar chart statistics. Some bars display as blue (default color) as oppposed to the colors assigned to the answers in the `answer_color_mapping` list. 
+ 1. Not all bar colors displayed correctly on some barchart statistics. Some bars display as blue (default color) as oppposed to the colors assigned to the answers in the `answer_color_mapping` list. 
 
-  <details>
+    <details>
 
-   <summary>Click here to view a screenshots of the bug</summary>
+      <summary>Click here to view a screenshots of the bug</summary>
    
-   ![Bar charts display](#)
+     ![Bar charts display](#)
 
-   ![answer_color_mapping list](#)
+     ![answer_color_mapping list](#)
   
-   </details>
+     </details>
 
  2. Console/Terminal does not clear completely when previous section scrolls. This issue could be OS/machine specific and persists on my machine despite trying several different methods with the `clear_console()` function.
 
-  <details>
+    <details>
 
-   <summary>Click here to view a screenshots of the bug</summary>
-   
-   ![Uncleared screenshot](#)
+     <summary>Click here to view a screenshots of the bug</summary>
+    
+     ![Uncleared screenshot](#)
   
-   </details>
+     </details>
 
 ## 👩‍💻 Resources
 
