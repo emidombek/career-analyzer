@@ -473,7 +473,7 @@ To install these dependencies, you can use the following command:
 
 ## 🐛 Known Issues and Bugs
 
- Currently there is one known unresolved bug in the application:
+ Unresolved Bugs:
   
  1. No all bar colors displayed correctly on some bar chart statistics. Some bars display as blue (default color) as oppposed to the colors assigned to the answers in the `answer_color_mapping` list. 
 
@@ -484,6 +484,16 @@ To install these dependencies, you can use the following command:
    ![Bar charts display](#)
 
    ![answer_color_mapping list](#)
+  
+   </details>
+
+ 2. Console/Terminal does not clear completely when previous section scrolls. This issue could be OS/machine specific and persists on my machine despite trying several different methods with the `clear_console()` function.
+
+  <details>
+
+   <summary>Click here to view a screenshots of the bug</summary>
+   
+   ![Uncleared screenshot](#)
   
    </details>
 
