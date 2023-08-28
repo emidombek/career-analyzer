@@ -5,7 +5,7 @@ from termcolor import colored  # Adds colored text and emoji support
 SHEET = get_google_sheet_client(
     creds_file="creds.json", sheet_name="career_analyzer"
 )
-# Dictionary that assigns colors for bar charts
+# Dictionary list that assigns colors for bar charts
 answer_color_mapping = {
     "Healthcare": "🟥",
     "Technology": "🟧",

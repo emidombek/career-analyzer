@@ -33,7 +33,7 @@ def get_google_sheet_client(
     return SHEET
 
 
-# Dictionary that maps survey questions to columns in the google spreadsheet
+# Dictionary list that maps survey questions to columns in the google spreadsheet
 column_mapping = {
     "What is your name?": "Name",
     "How old are you?": "Age",
