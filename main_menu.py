@@ -2,10 +2,10 @@ from survey import Survey
 from data_analysis import DataAnalyzer, column_mapping
 import os
 import subprocess
-from termcolor import colored  # Adds colored text and emoji support
+from termcolor import colored
 from simple_term_menu import (
     TerminalMenu,
-)  # Import the TerminalMenu class
+)
 
 
 def clear_console():
@@ -129,7 +129,7 @@ class TerminalMenuApp:
                 break
 
 
-# Starts program
+"""Starts program"""
 if __name__ == "__main__":
     app = TerminalMenuApp()
     app.main()

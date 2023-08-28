@@ -1,11 +1,11 @@
-import datetime  # Imports built in datetime module
-import time  # For delay on display answers timeout
-import gspread  # Imports Google sheets API
+import datetime
+import time
+import gspread
 from google.oauth2.service_account import (
     Credentials,
-)  # Imports Google service account Credentials
-from simple_term_menu import TerminalMenu  # Adds selectable menu
-from termcolor import colored  # Adds colored text
+)
+from simple_term_menu import TerminalMenu
+from termcolor import colored
 
 
 def get_google_sheet_client(
@@ -33,7 +33,7 @@ def get_google_sheet_client(
     return SHEET
 
 
-# Dictionary list that maps survey questions to columns in the google spreadsheet
+"""Dictionary list that maps survey questions to columns in the google spreadsheet"""
 column_mapping = {
     "What is your name?": "Name",
     "How old are you?": "Age",
@@ -45,8 +45,9 @@ column_mapping = {
 }
 
 
-# Survey class that contains survey logic
 class Survey:
+    """Survey class that contains survey logic"""
+
     def __init__(self):
         # List of answers
         self.career_areas = [
@@ -232,6 +233,7 @@ class Survey:
         Pairs questions and answers
         Assigns different colors
         Displays results
+        Add a delay between question-answer pairs
         """
         survey_results_message = colored("Survey Results:", "blue")
         print(survey_results_message)
@@ -243,5 +245,4 @@ class Survey:
             answer_colored = colored(answer, "yellow")
             print(f"{question_colored}\n- Answer: {answer_colored}\n")
             print("-" * 40)
-            # Add a delay between question-answer pairs
             time.sleep(1)
